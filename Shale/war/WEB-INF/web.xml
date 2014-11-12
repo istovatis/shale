@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+              http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5" xmlns="http://java.sun.com/xml/ns/javaee">
+
+	<!-- Servlets -->
+	<servlet>
+		<servlet-name>ExportServlet</servlet-name>
+		<servlet-class>com.shale.server.ExportServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ExportServlet</servlet-name>
+		<url-pattern>/export</url-pattern>
+	</servlet-mapping>
+
+	<!-- Default page to serve -->
+	<welcome-file-list>
+		<welcome-file>Shale.html</welcome-file>
+	</welcome-file-list>
+	<servlet>
+		<servlet-name>ExportService</servlet-name>
+		<servlet-class>com.shale.server.ExportServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ExportService</servlet-name>
+		<url-pattern>/shale/ExportService</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ImportService</servlet-name>
+		<servlet-class>com.shale.server.ImportServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ImportService</servlet-name>
+		<url-pattern>/shale/ImportService</url-pattern>
+	</servlet-mapping>
+	
+	<!-- Servlet declared in incubator -used by gwt-links- -->
+	<servlet>
+		<servlet-name>remoteLoggingServiceImpl</servlet-name>
+		<servlet-class>com.google.gwt.libideas.logging.server.RemoteLoggingServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>remoteLoggingServiceImpl</servlet-name>
+		<url-pattern>/shale/logging</url-pattern>
+	</servlet-mapping>
+
+</web-app>

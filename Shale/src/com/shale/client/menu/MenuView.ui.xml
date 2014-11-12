@@ -1,0 +1,44 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		.important {
+			font-weight: bold;
+		}
+		
+	</ui:style>
+	<g:HTMLPanel width="474px" height="450px">
+		<g:VerticalPanel width="540px" height="382px"
+	styleName="myForm">
+			<g:Cell horizontalAlignment="ALIGN_RIGHT">
+				<g:Image ui:field="logout" url="gwtexperimentals/gwt/clean/images/icons/logout.png" styleName="iconButtons" width="55px" height="64px" title = "Logout"/>
+			</g:Cell>
+			<g:VerticalPanel ui:field="UserInfosPanel" styleName="userInfos" spacing="10">
+				<g:HorizontalPanel ui:field="namePanel">
+					<g:Label ui:field="username" styleName="displayUser" />
+				<g:Label ui:field="groupLabel" styleName="displayGroup"/>
+				<g:Label ui:field="orgLabel" styleName="displayOrg"/>
+			</g:HorizontalPanel>
+				<g:HorizontalPanel ui:field="orgPanel">
+			<g:Label ui:field="organisation" styleName="displayInfos"/>
+		</g:HorizontalPanel>
+			</g:VerticalPanel>
+			<g:VerticalPanel styleName="myForm" width="342px">
+				<g:Label ui:field="mapLabel" styleName="displayInfos"/>
+				<g:ListBox visibleItemCount="1" ui:field="myMapsList" width="320px"/>
+				<g:Label ui:field="studentLabel" styleName="displayInfos"/>
+				<g:ListBox visibleItemCount="1" ui:field="myStudentsList" width="320px"/>
+			</g:VerticalPanel>
+			<g:Tree ui:field="myStudentsTree"/>
+			<g:HorizontalPanel spacing="10" width="213px">
+				<g:Image ui:field="openIcon" url="gwtexperimentals/gwt/clean/images/icons/open_map.png" styleName="iconButtons" width="58px" height="58px" title = "Open a concept map"/>
+				<g:HorizontalPanel ui:field="teacherPanel" width="204px">
+					<g:Image ui:field="newMapIcon" url="gwtexperimentals/gwt/clean/images/icons/addCluster.png" styleName="iconButtons" width="58px" height="58px" title = "Create a new concept map"/>
+					<g:Image ui:field="addStudentIcon" url="gwtexperimentals/gwt/clean/images/icons/add_student.png" styleName="iconButtons" width="58px" height="58px " title = "Add a student"/>
+					<g:Button ui:field="backUpBtn" text = "Back Up" visible="false"/>
+				</g:HorizontalPanel>
+			</g:HorizontalPanel>
+		</g:VerticalPanel>
+		
+	</g:HTMLPanel>
+</ui:UiBinder> 

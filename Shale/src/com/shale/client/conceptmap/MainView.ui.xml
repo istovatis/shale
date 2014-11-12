@@ -1,0 +1,115 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:p1="urn:import:com.google.gwt.user.cellview.client">
+	<ui:style>
+		
+	</ui:style>
+	<g:HTMLPanel ui:field="mainPanel">
+		<g:HorizontalPanel ui:field="horizontalPanel" width="558px"
+			height="400px">
+			<g:VerticalPanel width="92px" height="1600px"
+				ui:field="verticalPanel" styleName="leftMenu" horizontalAlignment="ALIGN_LEFT"
+				borderWidth="1">
+				<g:VerticalPanel height="135px" width="72px"
+					spacing="10" visible="true" styleName="menuLine">
+					<g:Image ui:field="newItemIcon" width="48px" height="48px"
+						url="gwtexperimentals/gwt/clean/images/icons/add_concept.png"
+						styleName="iconButtons" title = "Create a new concept"></g:Image>
+					<g:Image ui:field="exportIcon" width="48px" height="48px"
+						url="gwtexperimentals/gwt/clean/images/icons/save.png" styleName="iconButtons" title = "Save the concept map"/>
+					<g:Button width="41px" height="41px" ui:field="importBtn"
+						styleName="h1" text="" visible="false">Open concept map</g:Button>
+					<g:VerticalPanel>
+						<g:Image ui:field="clusterIcon"
+							url="gwtexperimentals/gwt/clean/images/icons/clusterize.png"
+							styleName="iconButtons" width="48px" height="48px " title = "See the main core issues of the map as created by system"/>
+						<g:HorizontalPanel>
+							<g:Button text="-" styleName="h1" ui:field="decrease"
+								width="28" visible="false" focus="true" enabled="false" title= "Decrease the number of core issues" />
+							<g:Button ui:field="help" text="+" styleName="h1"
+								visible="false" focus="true" title= "Increase the number of core issues"/>
+						</g:HorizontalPanel>
+						<g:Label stylePrimaryName="buttons" ui:field="QLabel" />
+					</g:VerticalPanel>
+					<g:VerticalPanel>
+						<g:Image ui:field="userClusterIcon"
+							url="gwtexperimentals/gwt/clean/images/icons/userCluster2.png"
+							styleName="iconButtons" width="48px" height="48px" title = "Create core issues"/>
+						<g:HorizontalPanel>
+							<g:Button focus="true" styleName="h1" text="$" visible="false"
+								ui:field="userModularityBtn" title = "See the modularity index of your map"/>
+							<g:Button ui:field="increaseUsrClustBtn" text="+"
+								styleName="h1" visible="false" focus="true" title = "Add a new core issue"/>
+						</g:HorizontalPanel>
+						<g:Label ui:field="UserQLabel" styleName="showInfos" />
+					</g:VerticalPanel>
+					<g:VerticalPanel styleName="menuLine">
+						<g:Image ui:field="similarityIcon" width="48px" height="48px"
+							url="gwtexperimentals/gwt/clean/images/icons/similarity.png"
+							styleName="iconButtons" title = "See the similarity between your core issues and the core issues provided by system"/>
+						<g:Label ui:field="SimilarityLabel" styleName="gwt-PushButton" />
+					</g:VerticalPanel>
+					<g:HorizontalPanel styleName="clusterPanel"
+						spacing="5" ui:field="clusterPanel" />
+					<g:Tree width="150px" ui:field="fileTree" animationEnabled="true"
+						height="291px" visible="false" />
+					<g:Tree width="123px" height="291px" visible="false"
+						ui:field="descriptionTree" />
+				</g:VerticalPanel>
+			</g:VerticalPanel>
+			<g:FocusPanel ui:field="focusPanel" styleName="focusPanel"
+				focus="true" height="1600px" width="2200px" />
+			<g:VerticalPanel ui:field="nameClustersPanel">
+				<g:Cell horizontalAlignment="ALIGN_RIGHT">
+					<g:Image ui:field="closeClustersIcon" height="16px" width="16px"
+						url="gwtexperimentals/gwt/clean/images/icons/icon_close_alt.png"
+						visible="false" />
+				</g:Cell>
+				<p1:CellTable ui:field="cellTable" width="102px"
+					styleName="clusterPanel" visible="false" />
+				<p1:CellTable ui:field="userCellTable" visible="false"
+					width="162px" />
+			</g:VerticalPanel>
+			<g:MenuBar animationEnabled="true" vertical="true" visible="false"
+				ui:field="menuBar">
+				<g:MenuItem text="New Concept" ui:field="newConcept" />
+				<g:MenuItem text="New item" />
+			</g:MenuBar>
+			<g:VerticalPanel ui:field="insertItem" styleName="insertItemMenu"
+				width="192px" height="110px" borderWidth="1" horizontalAlignment="ALIGN_RIGHT"
+				visible="false">
+				<g:Label text="" ui:field="typeLabel" width="180" styleName="myLabel" />
+				<g:TextArea ui:field="itemName" focus="true" />
+				<g:HorizontalPanel ui:field="cancelOk"
+					horizontalAlignment="ALIGN_RIGHT" styleName="leftMenu"
+					verticalAlignment="ALIGN_MIDDLE">
+					<g:Button ui:field="cancel" styleName="cancelOkBtn" focus="false" />
+					<g:Button ui:field="ok" styleName="cancelOkBtn" />
+				</g:HorizontalPanel>
+			</g:VerticalPanel>
+			<g:VerticalPanel borderWidth="1" height="110px"
+				horizontalAlignment="ALIGN_RIGHT" styleName="insertItemMenu" width="192px"
+				ui:field="insertMap" visible="false">
+				<g:Label styleName="myLabel" text="New Label" width="180"
+					ui:field="titleLabel" />
+				<g:TextArea ui:field="titleText" />
+				<g:Label styleName="myLabel" text="New Label" width="180"
+					ui:field="descLabel" />
+				<g:TextArea ui:field="descText" />
+				<g:HorizontalPanel horizontalAlignment="ALIGN_RIGHT"
+					styleName="leftMenu" verticalAlignment="ALIGN_MIDDLE">
+					<g:Button focus="false" styleName="cancelOkBtn" ui:field="cancelNewMap" />
+					<g:Button styleName="cancelOkBtn" ui:field="okNewMap" />
+				</g:HorizontalPanel>
+			</g:VerticalPanel>
+			<g:Label text="" ui:field="creator" />
+		</g:HorizontalPanel>
+		<g:VerticalPanel ui:field="userInfoPanel">
+		<g:Label ui:field="FQLabel" styleName="focusQuestion" />
+					<g:VerticalPanel styleName="displayGroup">
+						<g:Label ui:field="usernameLabel" />
+						<g:Label ui:field="orgLabel" />
+					</g:VerticalPanel>
+		</g:VerticalPanel>>
+	</g:HTMLPanel>
+</ui:UiBinder> 

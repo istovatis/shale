@@ -1,0 +1,404 @@
+/** Add css rules here for your application. */
+/** Example rules used by the template application (remove for your app) */
+h1 {
+	color: #ccc;
+	margin: 10px 0px;
+	padding: 1px;
+	border: 5px dodgerblue;
+	font-stretch: semi-condensed;
+	font-variant: small-caps;
+	font-size: 2em;
+	font-style: normal;
+	font-weight: bold;
+	text-align: center;
+}
+/* Login Form*/
+.myForm{
+/* Linux browsers */
+	margin-top: 20px;
+	margin-left: 20px;
+	padding: 10px;
+	border: 1px solid powderblue;
+	/* background-color: #EEEEEE; */
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px; /*  Firefox  */
+	-khtml-border-radius: 10px; /* Safari and chrome */
+	border-radius: 10px; /* Linux browsers */
+}
+
+.sendButton {
+	display: block;
+	font-size: 16pt;
+}
+
+/** Most GWT widgets already have a style name defined */
+.gwt-DialogBox {
+	width: 400px;
+}
+
+.dialogVPanel {
+	margin: 5px;
+}
+
+.serverResponseLabelError {
+	color: red;
+}
+
+/** Set ids using widget.getElement().setId("idOfElement") */
+#closeButton {
+	margin: 15px 6px 6px;
+}
+
+.targetPanel {
+	background-image:
+		url('http://www.iconhot.com/icon/png/sticky/64/trash.png')
+}
+
+.concept {
+	padding: 3px 5px;
+	font-size: small;
+	font-weight: bold;
+	text-align: center;
+	cursor: pointer;
+	border: 1px outset #ccc;
+	background-color: #0f96ff;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px; /*  Firefox  */
+	-khtml-border-radius: 10px; /* Safari and chrome */
+	border-radius: 10px; /* Linux browsers */
+}
+
+.concept_alone {
+	border: 1px outset #CCC;
+	background-color: #CCFF99;
+}
+
+
+.graph {
+	padding: 3px 5px;
+	font-size: small;
+	font-weight: bold;
+	text-align: center;
+	cursor: pointer;
+	border: 1px outset #ccc;
+	background-color: #6699ff;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px; /*  Firefox  */
+	-khtml-border-radius: 10px; /* Safari and chrome */
+	border-radius: 10px; /* Linux browsers */
+}
+
+.graph-1 {
+	/* 	if you wish no border colour just choose this class */
+}
+
+.graph0 {
+	font-weight: bold;
+	color: #CCFF99;
+/* 	color: #6699ff; */
+}
+
+.concept.choosed0{
+	border: 5px outset #CCFF99;
+	font-weight: bold;
+	color: #df55cd;
+}
+
+.graph1 {	
+	font-weight: bold;
+	color: #55dfba;
+}
+
+.graph2 {
+	font-weight: bold;
+	color: #df55cd;
+}
+
+.graph3 {
+	font-weight: bold;
+	color: #99aa88;
+}
+
+.graph4 {
+	font-weight: bold;
+	color: #eeaa11;
+}
+
+.graph5 {
+	font-weight: bold;
+	color: #996633;
+}
+
+.graph6 {
+	font-weight: bold;
+	color: #ccccee;
+}
+
+.graph7 {
+	font-weight: bold;
+	color: #ff3366;
+}
+
+.graph8 {
+	font-weight: bold;
+	color: #ffff66;
+}
+
+.graph9 {
+	font-weight: bold;
+	color: #0099ff;
+}
+
+.graph10 {
+	font-weight: bold;
+	color: #99ddaa;
+}
+
+.graph11 {
+	font-weight: bold;
+	color: #cc4455;
+}
+
+.graph12 {
+	font-weight: bold;
+	color: #99ccee;
+}
+
+.graph13 {
+	font-weight: bold;
+	color: #99ffff;
+}
+
+.graph14 {
+	font-weight: bold;
+	color: #999999;
+}
+
+.graph15 {
+	font-weight: bold;
+	color: #faaa99;
+}
+
+.graph16 {
+	font-weight: bold;
+	color: #993366;
+}
+
+.graph17 {
+	font-weight: bold;
+	color: #6677bb;
+}
+
+.graph18 {
+	font-weight: bold;
+	color: #995544;
+}
+
+.graph19 {
+	font-weight: bold;
+	color: #cc4499;
+}
+
+.graph20 {
+	font-weight: bold;
+	color: #cc5511;
+}
+
+.graph21 {
+	font-weight: bold;
+	color: #9977aa;
+}
+
+.test {
+	background-color: #995544;
+	color: #995544;
+	font-weight: bold;
+}
+
+
+.selectedConcept {
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px; /*  Firefox  */
+	-khtml-border-radius: 10px; /* Safari and chrome */
+	padding: 3px 5px;
+	border: 1px outset #ccc;
+	font-size: small;
+	
+	text-align: center;
+	background-color: #99ddaa;
+	cursor: pointer; /* Linux browsers */
+}
+
+.bin {
+	background-color: #0099cc;
+}
+
+.leftMenu {
+	border: 1px powderblue;
+	background-color: #f7f7f7;
+}
+
+.cancelOkBtn {
+	font-family: fantasy;
+	
+}
+
+.linkingPhrase {
+	padding: 0px 5px 0px 5px;
+	background-color: white;
+	font-size: small;
+	font-weight: bold;
+	text-align: center;
+	cursor: pointer;
+	word-wrap: break-word;
+	white-space:normal;
+}
+
+.focusPanel {
+	border: 1px solid #ccc;
+}
+
+.insertItemMenu {
+	background-color: #EEEEEE;
+}
+
+.myLabel {
+	text-align: center;
+	font-weight: bold;
+	font-size: small;
+}
+
+.displayInfos {
+	color: Black;
+	font-style: normal;
+}
+
+.displayUser {
+	color: lightslategray;
+	margin-right: 10px;
+	font-size: 18px;
+	font-style: normal;
+	font-weight: bold;
+}
+
+.files:hover{
+	color: #777777;
+}
+
+.descFiles:hover{
+	color: powderblue;
+}
+
+.descFiles:active{
+	color: powderblue;
+}
+.gwt-HTML {
+}
+.flag {
+	margin: 10px 5px 10px 350px;
+}
+.gwt-PushButton {
+}
+
+.addBtn {
+	color: black;
+	font-size: 18px;
+	font-style: normal;
+	font-weight: bold;
+	background-color: #CCFF99; 
+	-moz-border-radius: 20px;
+	border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -khtml-border-radius: 20px;
+  /*   background-image:
+		url('gwtexperimentals/gwt/clean/images/add.gif'); */
+}
+.focusQuestion {
+	color: GrayText;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border-bottom: 1px Gray;
+	font-size: 14px;
+	font-weight: normal;
+}
+
+.adminPanel {
+	border: 1px solid powderblue;
+	/* background-color: #EEEEEE; */
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px; /*  Firefox  */
+	-khtml-border-radius: 10px; /* Safari and chrome */
+	
+}
+
+.adminButtons {
+	margin-right: 5px;
+}
+
+.userInfos {
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	-webkit-border-radius: 10px; /*  Firefox  */
+	-khtml-border-radius: 10px; /* Safari and chrome */
+	color: white;
+	border: 1px solid powderblue;
+	background-color: #dfe3ee; /* Linux browsers */
+}
+.buttons {
+	margin: 10px 0px 0px 0px;
+}
+.gwt-ListBox {
+	margin: 0px 0px 10px;
+}
+.left bar {
+	border-top: 1px powderblue;
+	border-right: 1px;
+	border-bottom: 1px;
+	border-left: 1px;
+}
+.displayGroup {
+	color: #3b5998;
+	margin-right: 10px;
+	font-size: 18px;
+	font-style: normal;
+	font-weight: bold;
+}
+.displayOrg {
+	color: cornflowerblue;
+	font-size: 18px;
+	font-style: normal;
+	font-weight: bold;
+}
+
+
+.iconButtons {
+	border: 3px solid #EEEEEE;
+	margin-right: 20px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px; /*  Firefox  */
+	-khtml-border-radius: 10px; /* Safari and chrome */
+	border-radius: 10px; /* Linux browsers */
+	border: 2px outset #0f7aff;
+}
+
+.iconButtons:hover {
+	border: 2px outset #EEEEEE;
+}
+
+.clusterPanel {
+	margin: 10px;
+	border: 2px solid #EEEEEE;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px; /*  Firefox  */
+	-khtml-border-radius: 5px; /* Safari and chrome */
+	border-radius: 5px; /* Linux browsers */
+}
+showInfos {
+	color: Navy;
+	margin-left: 5px;
+	border: 1px solid Gray;
+	background-color: White;
+}
+menuLine {
+	background-color: dimgray;
+}
