@@ -37,7 +37,6 @@ public class MyDiagramModel implements IsSerializable {
 	// Functions
 	public static Set<FunctionModel> functionRepresentationSet;
 	private Map<Widget, String> functionWidgetMap;
-	private int id = 0;
 
 	// Links
 	private Set<LinkingPhraseModel> linkRepresentationSet;
@@ -76,14 +75,6 @@ public class MyDiagramModel implements IsSerializable {
 		function.id = id; // .getElement().getId();//++id + "";
 		function.top = WidgetUtils.getTop(functionWidget);
 		function.left = WidgetUtils.getLeft(functionWidget);
-		// Iterator it=functionRepresentationSet.iterator();
-		//
-		// while(it.hasNext())
-		// {
-		// FunctionModel value =(FunctionModel) it.next();
-		// //if(value.left==function.left && value.top==function.top)
-		// System.out.println("Value :"+value.id);
-		// }
 
 		try {
 			function.content = ((IsDiagramSerializable) functionWidget)
@@ -187,21 +178,11 @@ public class MyDiagramModel implements IsSerializable {
 		linkRepresentationSet.add(linkRepresentation);
 	}
 
-	public int getWidth() {
-		return width;
-	}
-
-	public void setWidth(int width) {
-		this.width = width;
-	}
-
-	public int getHeight() {
-		return height;
-	}
-
-	public void setHeight(int height) {
-		this.height = height;
-	}
+	public int getWidth() {	return width; }
+	public void setWidth(int width) { this.width = width; }
+	
+	public int getHeight() { return height; }
+	public void setHeight(int height) { this.height = height; }
 
 	public boolean isHasGrid() {
 		return hasGrid;

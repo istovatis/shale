@@ -2,7 +2,6 @@ package com.shale.client.utils;
 import java.util.List;
 
 import com.orange.links.client.DiagramController;
-import com.orange.links.client.connection.StraightArrowConnection;
 import com.orange.links.client.exception.DiagramViewNotDisplayedException;
 import com.orange.links.client.shapes.Point;
 import com.orange.links.client.shapes.Shape;
@@ -19,7 +18,6 @@ public class MyStraightArrowConnection extends MyAbstractConnection {
 	MyStraightArrowConnection(DiagramController controller, Shape startShape,
 			Shape endShape) throws DiagramViewNotDisplayedException {
 		super(controller, startShape, endShape);
-		// TODO Auto-generated constructor stub
 	}
 
 	private int arrowLength = 8;
@@ -126,7 +124,5 @@ public class MyStraightArrowConnection extends MyAbstractConnection {
 		canvas.stroke();
 		canvas.closePath();
 	}
-	
-	
 
 }

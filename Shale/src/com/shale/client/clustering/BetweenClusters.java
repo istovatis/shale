@@ -1,10 +1,7 @@
 package com.shale.client.clustering;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Formatter;
 
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.i18n.client.NumberFormat;
 import com.shale.client.conceptmap.MainView;
 
@@ -171,21 +168,7 @@ public class BetweenClusters {
 					+ " - " + power+" "+rowSum[i]+" "+betweenClustersCounter[i][i]);
 			modularity -= (float) power;
 		}
-		// for (int i = 0; i < numClusters; i++) {
-		// for (int j = 0; j < numClusters; j++) {
-		// if (i == j) {
-		// modularity += (double) (betweenClustersCounter[i][j]) / endings;
-		// System.out.println((betweenClustersCounter[i][j]) / endings
-		// + ".. i,j=" + betweenClustersCounter[i][j] * 2
-		// + " endings= " + endings);
-		// } else {
-		// double sum = rowSum[i];
-		// double div = (double) sum / endings;
-		// double power = Math.pow(div, 2.0);
-		// modularity -= (double) power;
-		// }
-		// }
-		// }
+
 		setQLabelText();
 	}
 
@@ -237,7 +220,7 @@ public class BetweenClusters {
 	}
 	
 	/**
-	 * Return a  3 digit precision of the given value
+	 * Return a 3 digit precision of the given value
 	 * @param value
 	 * @return
 	 */
@@ -247,7 +230,7 @@ public class BetweenClusters {
 	}
 	
 	/**
-	 * Return a  3 digit precision of the given value
+	 * Return a 3 digit precision of the given value
 	 * @param value
 	 * @return
 	 */

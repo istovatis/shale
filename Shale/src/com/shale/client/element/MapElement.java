@@ -110,27 +110,17 @@ public class MapElement extends Label implements HasAllTouchHandlers,
 	public boolean isSetStartWidget() { return isStartSet; }
 
 	public void setStartWidget() { isStartSet = true; }
-
 	public void unsetStartWidget() { isStartSet = false; }
 
 	public boolean isSetEndWidget() { return isEndSet; }
 
 	public void setEndWidget() { isEndSet = true; }
-
 	public void unsetEndWidget() { isEndSet = false; }
 	
-	public static void setLeft(int lefty) {
-		left = lefty;
-	}
+	public static void setLeft(int lefty) {	left = lefty; }
+	public static int getLeft(){ return left; }
 	
-	public static int getLeft(){
-		return left;
-	}
-	
-	public static void setTop(int topy){
-		top = topy;
-	}
-	
+	public static void setTop(int topy){ top = topy; }
 	public static int getTop(){ return top; }
 	
 	public int getClusterIndex() {

@@ -13,10 +13,7 @@ public class MenuActivity extends AbstractActivity {
 	ClientFactory clientFactory;
 	MenuView menuView;
 	
-	
-	public  MenuActivity() {
-		//Just do it.
-	}
+	public  MenuActivity() {}
 	
 	public MenuActivity(ClientFactory cf){
 		clientFactory=cf;

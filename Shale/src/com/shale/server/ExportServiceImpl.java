@@ -29,24 +29,6 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 public class ExportServiceImpl extends RemoteServiceServlet implements
 		ExportService {
 
-	/*
-	 * public void saveFile(String export, String [] tokens) {
-	 * System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"); //
-	 * token[5]:organisation. Get the full path of tei or anatolia folder String
-	 * url = getServletContext().getRealPath(tokens[5]); Files file = new
-	 * Files(tokens[0], tokens[3], url); String fileName = file.getFullPath();
-	 * System.out.println("@ExportServiceImple"+file.getFullPath()); File
-	 * exportFile = new File(fileName); try { exportFile.createNewFile(); }
-	 * catch (IOException e) { // TODO Auto-generated catch block
-	 * e.printStackTrace(); } try { BufferedWriter out = new BufferedWriter(new
-	 * OutputStreamWriter( new FileOutputStream(exportFile), "UTF-8"));
-	 * out.write(export); out.close();
-	 * 
-	 * // String url = GWT.getHostPageBaseURL(); //
-	 * Window.Location.replace(url); } catch (IOException e1) { // TODO
-	 * Auto-generated catch block e1.printStackTrace(); } }
-	 */
-
 	/**
 	 * Saves export data to fileName.
 	 * 

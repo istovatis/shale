@@ -86,9 +86,6 @@ public class Cluster extends RemoteServiceServlet {
 							sub.getVertices());
 					graphs.add(arrayList);	
 				}
-					//				for (Integer v : vertices) {
-//					System.out.println("Remove vertex" + v);
-//				}
 			}
 			setNumGraphs(graphs.size());
 			System.out.println("@Server "+graphs.size()+". Wanted: "+currentGraphs+" or "+numGraphs);

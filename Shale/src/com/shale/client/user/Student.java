@@ -3,8 +3,6 @@ package com.shale.client.user;
 import java.util.Date;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.event.logical.shared.SelectionEvent;
-import com.google.gwt.event.logical.shared.SelectionHandler;
 import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.i18n.client.Dictionary;
 import com.google.gwt.i18n.client.TimeZone;
@@ -16,6 +14,7 @@ import com.google.gwt.xml.client.Element;
 import com.google.gwt.xml.client.Node;
 import com.google.gwt.xml.client.NodeList;
 import com.google.gwt.xml.client.XMLParser;
+
 import com.shale.client.conceptmap.MainView;
 import com.shale.client.exporter.DiagramExportation;
 import com.shale.client.exporter.ExportService;

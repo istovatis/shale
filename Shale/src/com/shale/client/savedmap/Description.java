@@ -103,16 +103,6 @@ public class Description extends FileImportation {
 		}
 	}
 
-	/*
-	 * public String[] getCXLDescriptions(String text) { Document doc =
-	 * XMLParser.parse(text); Element root = doc.getDocumentElement(); NodeList
-	 * nodeList = root.getElementsByTagName("description"); String[]
-	 * descriptions = new String[nodeList.getLength()]; for (int i = 0; i <
-	 * nodeList.getLength(); i++) { Element descriptionElement = (Element)
-	 * nodeList.item(i); String desc = descriptionElement.getAttribute("name");
-	 * descriptions[i] = desc; } return descriptions; }
-	 */
-
 	public void addDescription(String name) {
 		Teacher addDesc = new Teacher(name);
 		addDesc.newDescription();

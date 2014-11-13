@@ -196,16 +196,7 @@ public class MainView extends Composite {
 		// refresh celltables whenever a new map is asked
 		cellTable.setRowCount(0, true);
 		userCellTable.setRowCount(0, true);
-		// String title = tokens[1];
-		// if (!title.equals("Untitled")) {
-		// creator = new Label(User.getTitle() + " Created by " +
-		// Map.getAuthor());
-		// // The line above commented to make program leighter
-		// //diagram.diagramRPC(tokens[0], tokens[1], tokens[2]);
-		// }
-		// else{
-		// creator = new Label("New Map Created by " + Map.getAuthor());
-		// }
+		
 		DiagramImportation.maxId = 0;
 		MainView.attachCreator();
 	}
@@ -429,15 +420,6 @@ public class MainView extends Composite {
 			typeLabel.setText(winDict.get("windowSave"));
 			typeLabel.setTitle("save");
 		}
-		// Set Description (For admins only) //Depricated
-		/*
-		 * if (typeLabel.getTitle().equals("description") && !name.isEmpty()) {
-		 * Description description = new Description();
-		 * description.addDescription(name); itemName.setText("");
-		 * diagramController.addWidget(insertItem, 300, 200);
-		 * typeLabel.setText(winDict.get("windowSave"));
-		 * typeLabel.setTitle("save"); }
-		 */
 	}
 
 	@UiHandler("cancel")

@@ -8,9 +8,7 @@ public class Files {
 	protected String directory;
 	protected String fullPath;
 	
-	public Files(){
-		//Just Do It
-	}
+	public Files(){}
 	
 	public Files(String fileName, String title, String dir) {
 		setFileName(fileName, title);

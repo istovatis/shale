@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.google.gwt.canvas.dom.client.CssColor;
 import com.orange.links.client.DiagramController;
-import com.orange.links.client.connection.StraightArrowConnection;
 import com.orange.links.client.exception.DiagramViewNotDisplayedException;
 import com.orange.links.client.shapes.Point;
 import com.orange.links.client.shapes.Shape;
@@ -21,7 +20,6 @@ public abstract  class MyConnection extends MyStraightArrowConnection{
 	public MyConnection(DiagramController controller, Shape startShape,
 			Shape endShape) throws DiagramViewNotDisplayedException {
 		super(controller, startShape, endShape);
-		// TODO Auto-generated constructor stub
 	}
 	
 	public void draw(Point p1, Point p2, boolean lastPoint){

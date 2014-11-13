@@ -1,10 +1,7 @@
 package com.shale.client.clustering;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 /**
  * Calculate the similarity between pairs of clusterings. Implementation of the publication 'A Similarity Measure for Clustering and Its
@@ -101,22 +98,12 @@ public class MapSimilarity {
 		for(int i=5; i<9; i++){
 			D2.add(i);
 		}
-//		ArrayList<Integer> D3 = new ArrayList<Integer>(); //Arrays.asList(5, 6);
-//		for(int i=5; i<7; i++){
-//			D3.add(i);
-//		}
-//		ArrayList<Integer> D4 = new ArrayList<Integer>(); //Arrays.asList(7, 8);
-//		for(int i=7; i<9; i++){
-//			D4.add(i);
-//		}
 		
 		graph1.add(C1);
 		graph1.add(C2);
 		
 		graph2.add(D1);
 		graph2.add(D2);
-		//graph2.add(D3);
-		//graph2.add(D4);
 		 
 		System.out.println("*** Similarity man "+ findSimilarity(graph1, graph2)+" ***");
 	}

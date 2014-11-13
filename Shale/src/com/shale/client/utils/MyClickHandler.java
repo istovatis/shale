@@ -8,9 +8,7 @@ public class MyClickHandler implements ClickHandler {
 
 	private int position;
 	
-	public MyClickHandler(){
-		//nothing at all
-	}
+	public MyClickHandler(){}
 	
 	public MyClickHandler(int position) {
 		this.position = position;

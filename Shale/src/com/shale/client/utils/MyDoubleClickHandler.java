@@ -12,9 +12,6 @@ public class MyDoubleClickHandler implements DoubleClickHandler {
 	}
 
 	@Override
-	public void onDoubleClick(DoubleClickEvent event) {
-		// TODO Auto-generated method stub
-
-	}
+	public void onDoubleClick(DoubleClickEvent event) {}
 
 }

@@ -3,7 +3,6 @@ package com.shale.client.clustering;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import com.google.gwt.cell.client.AbstractEditableCell;
 import com.google.gwt.cell.client.EditTextCell;
@@ -13,9 +12,7 @@ import com.google.gwt.user.cellview.client.RowStyles;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.view.client.HasData;
-import com.google.gwt.view.client.ListDataProvider;
-import com.shale.client.clustering.UserClustering.UserClusterInfo;
+
 import com.shale.client.conceptmap.MainView;
 import com.shale.client.element.Concept;
 import com.shale.client.importer.FileImportation;
@@ -69,7 +66,6 @@ public class SystemClustering {
 
 		@Override
 		public int compareTo(SysClusterInfo arg0) {
-			// TODO Auto-generated method stub
 			return 0;
 		}
 	}
@@ -183,21 +179,7 @@ public class SystemClustering {
 							result.remove(cluster);
 							cpReturnGraphs.remove(cluster);
 						}
-//						for (int i = 0; i < nClusters; i++) {
-//							// find every cluster with no conns and delete it				
-//							int rowSum = modIndex.getNumConnectedEdges(i);
-//							if (rowSum == 0) {
-//								try {
-//									Concept.aloneConcepts++;
-//									result.remove(i);
-//									cpReturnGraphs.remove(i);
-//								} catch (IndexOutOfBoundsException e) {
-//									// TODO Auto-generated catch block
-//									System.out.println("@Clustering "
-//											+ e.getStackTrace());
-//								}
-//							}
-//						}
+
 						setCurrentGraphs(result.size());
 						// give user the oportunity to name the clusters
 						nameClusters();

@@ -7,8 +7,7 @@ public class MenuPlace extends Place {
 	private String menuToken;
 	private static String[] tokens;
 
-	public MenuPlace() {
-	}
+	public MenuPlace() {}
 
 	public MenuPlace(String token) {
 		this.menuToken = token;
@@ -18,13 +17,9 @@ public class MenuPlace extends Place {
 		tokens = tok;
 	}
 
-	public static String[] getMenuTokens() {
-		return tokens;
-	}
+	public static String[] getMenuTokens() { return tokens; }
 
-	public String getMenuToken() {
-		return menuToken;
-	}
+	public String getMenuToken() { return menuToken; }
 
 	public static class Tokenizer implements PlaceTokenizer<MenuPlace> {
 

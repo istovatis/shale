@@ -55,33 +55,19 @@ public class Teacher extends User {
 		setDescription(name);
 	}
 
-	public Teacher() {
-		// Just do it
-	}
+	public Teacher() { }
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getName() {
-		return name;
-	}
+	public void setName(String name) { this.name = name; }
+	public String getName() { return name; }
 
 	public static void setSelectedTeacher(String tech) {
 		selectedTeacher = tech;
 	}
 
-	public static String getSelectedTeacher() {
-		return selectedTeacher;
-	}
-
-	public static void setTeacherList(String teach) {
-		teacherList = teach;
-	}
-
-	public static String getTeacherList() {
-		return teacherList;
-	}
+	public static String getSelectedTeacher() { return selectedTeacher; }
+	
+	public static void setTeacherList(String teach) { teacherList = teach; }
+	public static String getTeacherList() { return teacherList; }
 
 	/**
 	 * Get the whole context of the students.cxl file. Keep only my students.
@@ -167,16 +153,7 @@ public class Teacher extends User {
 		return maxId;
 	}
 
-	public void chooseMap() {
-		/*
-		 * MenuView.myStudentsList.addChangeHandler(new ChangeHandler<ListBox>
-		 * (){
-		 * 
-		 * @Override public void onChange(ChangeEvent event) {
-		 * 
-		 * }
-		 */
-	}
+	public void chooseMap() {}
 
 	/**
 	 * 

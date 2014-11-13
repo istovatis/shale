@@ -236,32 +236,7 @@ public class DiagramExportation extends DiagramSerializationService {
 				Clustering.isChanged = false;
 			}
 		};
-		// // get MainView tokens.
-		// String[] tokens = MainPlace.getMainTokens();
-		// User.setAllData();
-		// // Map author was set as tokens[0] at menuView.
-		// String author = tokens[0];
-		// String group = User.getGroup();
-		// String dir = User.getOrganisation();
-		// String fileName = null;
-		// // File name depends on user's group
-		// if (group.equals("teacher")) {
-		// Teacher admin = new Teacher();
-		// // If author of the map is the teacher, set file as
-		// // admin-user-title.cxl
-		// if (author.equals(User.getUsername())) {
-		// admin.setFileName();
-		// }
-		// // if author is not this teacher, set file as user-title.cxl
-		// else {
-		// admin.setFileName(author);
-		// }
-		// fileName = admin.getFileName();
-		// } else if (group.equals("student")) {
-		// Student student = new Student();
-		// student.setFileName();
-		// fileName = student.getFileName();
-		// }
+		
 		exportSvc.saveFile(diagram, User.getOrganisation(),
 				FileImportation.fileName, "newMap", callback);
 	}

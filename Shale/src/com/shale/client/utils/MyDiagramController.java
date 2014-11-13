@@ -265,11 +265,6 @@ public class MyDiagramController extends DiagramController {
 			inEditionDragMovablePoint = false;
 			movablePoint = highlightConnection.addMovablePoint(highlightPoint);
 			System.out.println(highlightConnection.getMovablePoints());
-//			List<Point> points = highlightConnection.getMovablePoints();
-//			for(Point p : points){
-//				System.out.println(p);
-//			}
-//			System.out.println("------------");
 			allMovablePoints();
 			highlightConnection.setSynchronized(false);
 			highlightConnection.setAllowSynchronized(false);
