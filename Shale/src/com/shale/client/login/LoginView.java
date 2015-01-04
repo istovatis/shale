@@ -21,10 +21,8 @@ import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.user.client.ui.PasswordTextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
-import com.google.gwt.user.client.ui.Tree;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.SimpleCheckBox;
 import com.shale.client.conceptmap.MainPlace;
 
@@ -41,23 +39,12 @@ public class LoginView extends Composite implements HasText {
 	@UiField public static Button cancel;
 	@UiField public static Button done;
 	@UiField public static TextBox username;
-	@UiField public TextBox mail;
 	@UiField public PasswordTextBox password;
 	@UiField public VerticalPanel organisation;
 	@UiField public Image flag_gr;
 	@UiField public Image flag_en;
 	@UiField public static Label usernameLabel;
 	@UiField public static Label passwordLabel;
-	@UiField public static Label mailLabel;
-	@UiField public static Label authorLabel;
-	@UiField public static Label newDescLabel;
-	@UiField public static Tree authorTree;
-	@UiField public HorizontalPanel teacherPanel;
-	@UiField public Button newDescBtn;
-	@UiField public TextBox newDesc;
-	@UiField public HorizontalPanel newDescPanel;
-	@UiField public static Label descriptionLabel;
-	@UiField public static Label groupLabel;
 	@UiField public SimpleCheckBox showPassword;
 	@UiField public static Label showPassLabel;
 	/*
@@ -120,7 +107,7 @@ public class LoginView extends Composite implements HasText {
 	public void setTokens() {
 		tokens[0] = username.getText();
 		tokens[1] = password.getText();
-		tokens[2] = mail.getText();
+		//tokens[2] = mail.getText();
 		// set tokens[5] as organisation. Organisation initialized in
 		// ValidateUser method of class User.
 		tokens[5] = User.getOrganisation();
@@ -230,12 +217,6 @@ public class LoginView extends Composite implements HasText {
 			Window.alert(err);
 		}
 		return checked;
-	}
-
-	public void visualiseDescLabel() {
-		if (descriptionLabel.isVisible() == false) {
-			descriptionLabel.setVisible(true);
-		}
 	}
 
 	/**

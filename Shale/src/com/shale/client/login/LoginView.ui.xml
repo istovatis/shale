@@ -1,6 +1,7 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
-	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:b="urn:import:com.github.gwtbootstrap.client.ui">
 	<ui:style>
 		.cancelButton {
 			font-weight: bold;
@@ -19,56 +20,38 @@
 			height: 300px;
 			padding: 20px 8px 10px 20px;
 		}
+		
+		.alignMiddle{
+            display: table-cell;
+            vertical-align: middle;
+            text-align:center;
+        }
+		
 		.myform {
 		}
-		.myForm {
-		}
+
 		.addBtn {
 		}
 	</ui:style>
-	<g:HTMLPanel styleName="h1" ui:field="userLabel">
-		<g:HorizontalPanel horizontalAlignment="ALIGN_RIGHT" width="81px" styleName="flag">
+	<g:HTMLPanel addStyleNames="{style.alignMiddle}"  ui:field="userLabel">
+		<g:VerticalPanel width="447px" height="241px" ui:field="organisation" styleName="myForm">
+			<g:HorizontalPanel horizontalAlignment="ALIGN_RIGHT" width="81px" styleName="flag">
 				<g:Image ui:field="flag_gr" url="shale/gwt/clean/images/flag_gr.png" width="38px" height="38px"/>
 				<g:Image ui:field="flag_en" url="shale/gwt/clean/images/flag.png" width="38px" height="38px"/>
 			</g:HorizontalPanel>
-	
-		<g:VerticalPanel width="447px" height="241px" ui:field="organisation" styleName="myForm">
-			<g:HorizontalPanel width="330px" visible="false">
-			<g:Label height="34px" text="New Label" width="108px" ui:field="groupLabel"/>
-			<g:VerticalPanel height="64px" width="185px">
-				<g:CheckBox ui:field="checkStudent"/>
-				<g:CheckBox ui:field="checkTeacher"/>
-			</g:VerticalPanel>
-		</g:HorizontalPanel>
-			<g:HorizontalPanel width="330px">
+			<g:HorizontalPanel width="330px" styleName="formFields">
 				<g:Label text="New Label" width="108px" height="34px" ui:field="usernameLabel" />
 				<g:TextBox ui:field="username" width="177px"></g:TextBox>
 			</g:HorizontalPanel>
-			<g:HorizontalPanel width="330px">
+			<g:HorizontalPanel width="330px" styleName="formFields">
 				<g:Label height="34px" text="New Label" width="108px" ui:field="passwordLabel" />
 				<g:PasswordTextBox ui:field="password" width="177px"/>
 			</g:HorizontalPanel>
-			<g:HorizontalPanel>
+			<g:HorizontalPanel styleName="formFields">
 				<g:Label ui:field="showPassLabel"/>
 				<g:SimpleCheckBox ui:field="showPassword"/>
 			</g:HorizontalPanel>
-			<g:HorizontalPanel width="330px" visible="false">
-				<g:Label height="34px" text="New Label" width="108px" ui:field="mailLabel"/>
-				<g:TextBox ui:field="mail" width="177px"/>
-			</g:HorizontalPanel>
-			<g:HorizontalPanel height="" width="330px" ui:field="teacherPanel" visible="false">
-				<g:VerticalPanel>
-				<g:Label height="17px" width="108px" ui:field="authorLabel"/>
-				<g:Label ui:field="descriptionLabel" visible="false"/>
-			</g:VerticalPanel>
-				<g:Tree animationEnabled="true" ui:field="authorTree" width="185px"/>
-			</g:HorizontalPanel>
-			<g:HorizontalPanel height="" width="330px" ui:field="newDescPanel" visible="false">
-				<g:Label height="17px" width="108px" ui:field="newDescLabel"/>
-				<g:TextBox ui:field="newDesc" width="177px"></g:TextBox>
-				<g:Button width="30px" ui:field="newDescBtn" height="30px" text="+" styleName="addBtn" focus="true" />
-			</g:HorizontalPanel>
-			<g:HorizontalPanel spacing="20">
+			<g:HorizontalPanel width="447px" styleName = "submission">
 				<g:Cell horizontalAlignment="ALIGN_CENTER">
 					<g:Button ui:field="cancel" styleName="{style.cancelButton}"  width="130px" height="33px"/>
 				</g:Cell>
@@ -76,6 +59,8 @@
 					<g:Button ui:field="done" styleName="{style.doneButton}" width="130px" height="33px" enabled="false"></g:Button>
 				</g:Cell>
 			</g:HorizontalPanel>
+				<g:Image ui:field="espa" styleName="espa" url="shale/gwt/clean/images/espa.png" width="417px" height="83px"/>
 		</g:VerticalPanel>
 	</g:HTMLPanel>
+
 </ui:UiBinder> 

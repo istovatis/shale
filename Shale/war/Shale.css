@@ -13,7 +13,7 @@ h1 {
 	text-align: center;
 }
 /* Login Form*/
-.myForm{
+.myForm {
 /* Linux browsers */
 	margin-top: 20px;
 	margin-left: 20px;
@@ -24,6 +24,24 @@ h1 {
 	-webkit-border-radius: 10px; /*  Firefox  */
 	-khtml-border-radius: 10px; /* Safari and chrome */
 	border-radius: 10px; /* Linux browsers */
+}
+
+.formFields {
+	margin-left: 20px;
+	padding: 10px;
+}
+
+.submission {
+	margin-top: 30px;
+}
+
+.espa { 
+/* Linux browsers */
+	margin-top: 220px;
+	padding: 10px;
+	display: table-cell;
+    vertical-align: middle;
+    text-align:center;
 }
 
 .sendButton {
