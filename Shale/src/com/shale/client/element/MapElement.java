@@ -10,6 +10,7 @@ import com.google.gwt.i18n.client.Dictionary;
 import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.MenuBar;
 import com.google.gwt.user.client.ui.MenuItem;
 import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.Widget;
@@ -17,6 +18,8 @@ import com.orange.links.client.connection.Connection;
 import com.orange.links.client.menu.ContextMenu;
 import com.orange.links.client.save.*;
 import com.orange.links.client.shapes.Point;
+import com.shale.client.Uima.NeighborMenu;
+import com.shale.client.Uima.NeighborWordsCollector;
 import com.shale.client.clustering.UserClustering;
 import com.shale.client.conceptmap.MainView;
 import com.shale.client.utils.Languages;
@@ -28,6 +31,7 @@ public class MapElement extends Label implements HasAllTouchHandlers,
 		IsDiagramSerializable, ContextMenuHandler {
 	Dictionary dict;
 	protected PopupPanel contextMenu;
+	protected MenuItem neighborMenuItem;
 	protected Widget widget;
 
 	protected String content;
@@ -147,21 +151,12 @@ public class MapElement extends Label implements HasAllTouchHandlers,
 			return false;
 	}
 
-	public void setLinkingPhrasePos(int position) {
-		linkingPhrasePos = position;
-	}
-
+	public void setLinkingPhrasePos(int position) { linkingPhrasePos = position; }
 	public int getLinkingPhrasePos() { return linkingPhrasePos; }
 
 	public boolean IsSetLinkingPhrase() { return isLinkingPhraseSet; }
-
-	public void setLinkingPhrase() {
-		isLinkingPhraseSet = true;
-	}
-
-	public void unsetLinkingPhrase() {
-		isLinkingPhraseSet = false;
-	}
+	public void setLinkingPhrase() { isLinkingPhraseSet = true; }
+	public void unsetLinkingPhrase() { isLinkingPhraseSet = false; }
 
 	public Widget getListItem(int pos) {
 		return widgetList.get(pos);
@@ -320,20 +315,7 @@ public class MapElement extends Label implements HasAllTouchHandlers,
 	}
 	
 	public String setProperWidth(String text){
-		int length = text.length();
-		int width = 20;
-		String properWidth = String.valueOf(20);
-		
-		/*if(length > width){
-			for (int i=21; i< text.length(); i++) {
-				char c = text.charAt(i);
-			    if (Character.isSpaceChar(c)) {
-			    	properWidth = String.valueOf(i);
-			    }
-			}	
-			System.out.println("true!");
-		}*/
-		return properWidth;
+		return String.valueOf(20);
 	}
 
 	@Override
@@ -350,28 +332,45 @@ public class MapElement extends Label implements HasAllTouchHandlers,
 
 	protected void initWidget(Widget widget) {
 		this.contextMenu = new ContextMenu();
-		String ren = Languages.getDictionary().get("rename");
-		String delete = Languages.getDictionary().get("del");
-		String addToCluster = Languages.getDictionary().get("addToCluster");
+		String renameTxt = Languages.getDictionary().get("rename");
+		String deleteTxt = Languages.getDictionary().get("del");
+		String addToClusterTxt = Languages.getDictionary().get("addToCluster");
+		String findHelpfulWordsTxt = Languages.getDictionary().get("findNeighbors");
 		
-		// Add rename option
-		((ContextMenu) this.contextMenu).addItem(new MenuItem(ren, true,
+		addRenameOption(renameTxt);
+		addDeleteOption(deleteTxt);
+		addToClusterOption(addToClusterTxt);
+		findHelpfulWords(findHelpfulWordsTxt);
+	}
+	
+	/**
+	 * Add rename option to every concept
+	 * @param rename
+	 */
+	protected void addRenameOption(String rename) {
+		((ContextMenu) this.contextMenu).addItem(new MenuItem(rename, true,
 				new Command() {
 					public void execute() {
 						// fireEvent
 						contextMenu.hide();
 						setSelectedPosition(getCurrentLabelPos());
-						MainView.addInsertItemPanel(getLeft()-192, getTop());
+						MainView.addInsertItemPanel(getLeft() - 192, getTop());
 						String rename = Languages.getMsgs().get("rename");
 						MainView.typeLabel.setText(rename);
-						//keep the previous text name
+						// keep the previous text name
 						MainView.itemName.setText(widgetList.get(getCurrentLabelPos()).getContent());
 						MainView.itemName.setFocus(true);
 						MainView.typeLabel.setTitle("rename");
 					}
 				}));
-		// Add delete option
-		((ContextMenu) this.contextMenu).addItem(new MenuItem(delete, true,
+	}
+	
+	/**
+	 * Provide a delete element option to map element
+	 * @param deleteTxt
+	 */
+	protected void addDeleteOption(String deleteTxt) {
+		((ContextMenu) this.contextMenu).addItem(new MenuItem(deleteTxt, true,
 				new Command() {
 					public void execute() {
 						// fireEvent
@@ -379,18 +378,43 @@ public class MapElement extends Label implements HasAllTouchHandlers,
 						contextMenu.hide();
 					}
 				}));
-		// AddToCluster option
-		((ContextMenu) this.contextMenu).addItem(new MenuItem(addToCluster, true,
-				new Command() {
+	}
+	
+	/**
+	 * Add to cluster option for concepts
+	 * @param addToClusterTxt
+	 */
+	protected void addToClusterOption(String addToClusterTxt) {
+		((ContextMenu) this.contextMenu).addItem(new MenuItem(addToClusterTxt,
+				true, new Command() {
 					public void execute() {
 						// fireEvent
 						Concept widget = (Concept) widgetList.get(getCurrentLabelPos());
-						widgetList.get(getCurrentLabelPos()).setClusterIndex(UserClustering.getChosen());
-						//widget.setClusterIndex(UserClustering.getChosen());
+						widgetList.get(getCurrentLabelPos()).setClusterIndex(
+								UserClustering.getChosen());
+						// widget.setClusterIndex(UserClustering.getChosen());
 						UserClustering.borderIt(widget);
-						
 					}
 				}));
+	}
+	
+	protected void findHelpfulWords(String findHelpfulWordsTxt) {
+		
+		neighborMenuItem = new MenuItem(findHelpfulWordsTxt,
+				true, new Command() {
+					public void execute() {
+						Concept widget = (Concept) widgetList.get(getCurrentLabelPos());
+						NeighborWordsCollector wordsCollector = new NeighborWordsCollector(widget.getText());
+						ArrayList<String> neighborWords = wordsCollector.findNeighors();
+						neighborWords.add("yo");
+						neighborWords.add("This is amazing");
+						neighborWords.add("Πολύ σωστά");
+						contextMenu.getWidget().getOffsetHeight();
+						NeighborMenu list = new NeighborMenu(neighborWords, widget.getAbsoluteTop(), widget.getAbsoluteTop());		
+						neighborMenuItem.setSubMenu(NeighborMenu.getMenuBar());
+					}
+				});
+		((ContextMenu) this.contextMenu).addItem(neighborMenuItem);
 	}
 	
 	public void setLanguage(){

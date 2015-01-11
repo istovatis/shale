@@ -44,5 +44,8 @@
 		class="com.shale.server.ExportServiceImpl" />
 	<servlet path="/ImportService"
 		class="com.shale.server.ImportServiceImpl" />
+	
+	<!-- Extra -->
+	<inherits name="com.github.gwtbootstrap.Bootstrap" />
 
 </module>
