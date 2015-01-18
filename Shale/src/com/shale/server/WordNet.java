@@ -1,13 +1,10 @@
 package com.shale.server;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Iterator;
 import java.util.List;
-
-import com.shale.client.clustering.UserClustering;
 
 import edu.mit.jwi.Dictionary;
 import edu.mit.jwi.IDictionary;

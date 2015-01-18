@@ -44,6 +44,8 @@
 		class="com.shale.server.ExportServiceImpl" />
 	<servlet path="/ImportService"
 		class="com.shale.server.ImportServiceImpl" />
+		<servlet path="/WordNetService"
+		class="com.shale.server.WordNetServiceImpl" />
 	
 	<!-- Extra -->
 	<inherits name="com.github.nmorel.gwtjackson.GwtJackson" />
