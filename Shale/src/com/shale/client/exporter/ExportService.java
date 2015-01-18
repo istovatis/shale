@@ -19,6 +19,11 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
+/**
+ * Interface that is necessary for the RPC mechanism  
+ * @author Istovatis -- istovatis@gmail.com --
+ *
+ */
 @RemoteServiceRelativePath("ExportService")
 public interface ExportService extends RemoteService {
 

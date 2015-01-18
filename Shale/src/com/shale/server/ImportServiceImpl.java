@@ -14,11 +14,19 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import com.shale.client.importer.ImportService;
 import com.shale.server.Cluster.Cluster;
 
+/**
+ * Service used to import mostly diagrams. Can import diagrams along with their
+ * metadata.
+ * 
+ * @author Istovatis -- istovatis@gmail.com --
+ *
+ */
 public class ImportServiceImpl extends RemoteServiceServlet implements
 		ImportService {
 
 	private boolean restart = false;
-
+	public boolean getRestart() { return restart; }
+	public void setRestart(boolean restart) { this.restart = restart; }
 	/**
 	 * (non-Javadoc)
 	 * 
@@ -59,20 +67,6 @@ public class ImportServiceImpl extends RemoteServiceServlet implements
 		return fileXml;
 	}
 
-	/**
-	 * Find and return all concept maps saved by user and admin. The directory
-	 * of the file depends on the organisation.
-	 */
-	/*
-	 * public String[] fileFinder(String[] tokens) { // Gets the directory from
-	 * the organisation String url = getServletContext().getRealPath(tokens[1]);
-	 * Files file = new Files(tokens[0], url); String directory =
-	 * file.getDirectory(); File dir; dir = new File(directory); final String
-	 * user = tokens[0] + "-"; return dir.list(new FilenameFilter() { public
-	 * boolean accept(File dir, String filename) { return
-	 * (filename.startsWith(user) || filename .startsWith("admin")); } }); }
-	 */
-
 	public String[] fileFinder(String username, String organisation) {
 		// Gets the directory from the organisation
 		String url = getServletContext().getRealPath(organisation);
@@ -100,11 +94,7 @@ public class ImportServiceImpl extends RemoteServiceServlet implements
 			String path = getServletContext().getRealPath("dict")+File.separator;
 			WordNet word = new WordNet(path);
 			word.testDictionary(path);
-			//word.getSynonyms("sales");
-			//System.out.println("-----------");
-			//word.getHypernyms("sales");
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		
@@ -113,8 +103,7 @@ public class ImportServiceImpl extends RemoteServiceServlet implements
 		String parsedText = null;
 		String url = null;
 		BufferedReader inputStream = null;
-		// Files file = new Files(fileName, dir);
-		// fileName = getServletContext().getRealPath(file.getFullPath());
+
 		if (occasion.equals("descName")) {
 			url = getServletContext().getRealPath(dir + slash + "descriptions");
 		} else
@@ -138,7 +127,6 @@ public class ImportServiceImpl extends RemoteServiceServlet implements
 						parsedText = parsedText + text;
 				}
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		} catch (FileNotFoundException e) {
@@ -148,7 +136,6 @@ public class ImportServiceImpl extends RemoteServiceServlet implements
 				try {
 					inputStream.close();
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					System.out.println(e.getLocalizedMessage()
 							+ e.getStackTrace());
 				}
@@ -170,17 +157,7 @@ public class ImportServiceImpl extends RemoteServiceServlet implements
 		cluster.setFileXML(fileXml);
 		cluster.manageGraph(clusters, currentGraphs, increase);
 		System.out.println(cluster.getSubGraphsNum() + " clusters from server");
-		// System.out.println("Clusters"+cluster.getClusters().size());
 
 		return cluster.getClusters();
-	}
-
-	public boolean getRestart() {
-		return restart;
-	}
-
-	public void setRestart(boolean restart) {
-		this.restart = restart;
-	}
-	
+	}	
 }

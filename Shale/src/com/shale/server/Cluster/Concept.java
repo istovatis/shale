@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ * The concept representation in the server
+ * @author Istovatis -- istovatis@gmail.com --
+ *
+ */
 class Concept {
 
 	String id;

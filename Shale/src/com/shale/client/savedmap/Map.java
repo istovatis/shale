@@ -1,5 +1,10 @@
 package com.shale.client.savedmap;
 
+/**
+ * A map contains an author and a description
+ * @author Istovatis -- istovatis@gmail.com --
+ *
+ */
 public class Map {
 	
 	private String description;

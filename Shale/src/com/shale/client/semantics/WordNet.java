@@ -11,6 +11,11 @@ import edu.mit.jwi.item.IWord;
 import edu.mit.jwi.item.IWordID;
 import edu.mit.jwi.item.POS;
 
+/**
+ * Basic interaction with the word net semantics tool.
+ * @author Istovatis -- istovatis@gmail.com --
+ *
+ */
 public class WordNet {
 
 	public void testDictionary() throws IOException {

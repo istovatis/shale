@@ -113,7 +113,14 @@ public class DomParserCM2 {
 			ioe.printStackTrace();
 		}
 	}
-
+	
+	/**
+	 * Parse an xml using builder to get DOM representation of the XML file. If
+	 * you want to directly give the content of a file, you have to give it an
+	 * InputStream, for example a ByteArrayInputStream.
+	 * 
+	 * @param filename
+	 */
 	private void parseXmlFileText(String filename) {
 		// get the factory
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -123,10 +130,6 @@ public class DomParserCM2 {
 			// Using factory get an instance of document builder
 			DocumentBuilder db = dbf.newDocumentBuilder();
 
-			// Parse using builder to get DOM representation of the XML file
-			// If you want to directly give the content of a file, you have to
-			// give it an InputStream,
-			// for example a ByteArrayInputStream.
 			dom = db.parse(new InputSource(new ByteArrayInputStream(filename
 					.getBytes("utf-8"))));
 
@@ -210,25 +213,16 @@ public class DomParserCM2 {
 	}
 
 	/**
-	 * I take a concept element and read the values in, create a Concept object
-	 * and return it
+	 * Take a concept element and read the values in, create a Concept object
+	 * and return it.
 	 * 
 	 * @param conceptEl
 	 * @return
 	 */
 	private Concept getConcept(Element conceptEl) {
-
-		// for each <employee> element get text or int values of
-		// name ,id, age and name
-
-		// for each <concept> element get text value of label
-
 		String id = conceptEl.getAttribute("id");
-
 		String label = conceptEl.getAttribute("label");
-
-		// String label = getTextValue(conceptEl,"label");
-
+		
 		// Create a new Employee with the value read from the xml nodes
 		Concept c = new Concept(id, label);
 
@@ -253,7 +247,7 @@ public class DomParserCM2 {
 	}
 
 	/**
-	 * I take a concept element and read the values in, create a Concept object
+	 * Take a concept element and read the values in, create a Concept object
 	 * and return it
 	 * 
 	 * @param conceptEl
@@ -416,8 +410,8 @@ public class DomParserCM2 {
 	}
 
 	/**
-	 * I take a xml element and the tag name, look for the tag and get the text
-	 * content i.e for <employee><name>John</name></employee> xml snippet if the
+	 * Take an XML element and the tag name, look for the tag and get the text
+	 * content i.e for <employee><name>John</name></employee> XML snippet if the
 	 * Element points to employee node and tagName is name I will return John
 	 * 
 	 * @param ele
@@ -489,8 +483,7 @@ public class DomParserCM2 {
 			System.out.println(it.next().toString());
 		}
 
-		System.out.println("\n\nNo of Propositions '" + myPropositions.size()
-				+ "'.");
+		System.out.println("\n\nNo of Propositions '" + myPropositions.size() + "'.");
 
 		it = myPropositions.iterator();
 		while (it.hasNext()) {

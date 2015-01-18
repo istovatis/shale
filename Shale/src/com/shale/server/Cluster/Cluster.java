@@ -12,6 +12,13 @@ import edu.uci.ics.jung.graph.Graph;
 import edu.uci.ics.jung.graph.SparseMultigraph;
 import edu.uci.ics.jung.graph.util.EdgeType;
 
+/**
+ * Cluster a given graph based on a requested number of graphs. Using the
+ * EdgeBetweennessClusterer algorithm provided by jung library.
+ * 
+ * @author Istovatis -- istovatis@gmail.com --
+ *
+ */
 public class Cluster extends RemoteServiceServlet {
 
 	private static ArrayList<Integer> links = new ArrayList<Integer>(0);

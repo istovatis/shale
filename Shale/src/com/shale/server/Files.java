@@ -2,6 +2,11 @@ package com.shale.server;
 
 import java.io.File;
 
+/**
+ * A file representation
+ * @author Istovatis -- istovatis@gmail.com --
+ *
+ */
 public class Files {
 	protected String organisation;
 	protected String fileName;

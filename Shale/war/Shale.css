@@ -26,6 +26,12 @@ h1 {
 	border-radius: 10px; /* Linux browsers */
 }
 
+.simpleForm {
+	margin-top: 20px;
+	margin-left: 20px;
+	padding: 10px;
+}
+
 .formFields {
 	margin-left: 20px;
 	padding: 10px;
@@ -354,13 +360,13 @@ h1 {
 }
 
 .userInfos {
-	-moz-border-radius: 10px;
-	border-radius: 10px;
-	-webkit-border-radius: 10px; /*  Firefox  */
-	-khtml-border-radius: 10px; /* Safari and chrome */
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	-webkit-border-radius: 5px; /*  Firefox  */
+	-khtml-border-radius: 5px; /* Safari and chrome */
 	color: white;
-	border: 1px solid powderblue;
 	background-color: #dfe3ee; /* Linux browsers */
+	padding: 15px;
 }
 .buttons {
 	margin: 10px 0px 0px 0px;

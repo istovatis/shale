@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 /**
- * Calculate the similarity between pairs of clusterings. Implementation of the publication 'A Similarity Measure for Clustering and Its
- * Applications' by Guadalupe J. Torres et al.
+ * Calculate the similarity between pairs of clusterings. Implementation of the
+ * publication 'A Similarity Measure for Clustering and Its Applications' by
+ * Guadalupe J. Torres et al. Similarity is expressed as a number between 0 and
+ * 1. 0 defines a total absence of similarity of the two clusters whereas 1
+ * declares that the two clusters are unique.
  *
  */
 public class MapSimilarity {

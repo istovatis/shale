@@ -10,7 +10,6 @@ import com.google.gwt.i18n.client.Dictionary;
 import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.MenuBar;
 import com.google.gwt.user.client.ui.MenuItem;
 import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.Widget;
@@ -20,6 +19,7 @@ import com.orange.links.client.save.*;
 import com.orange.links.client.shapes.Point;
 import com.shale.client.Uima.NeighborMenu;
 import com.shale.client.Uima.NeighborWordsCollector;
+import com.shale.client.Uima.UimaResponse;
 import com.shale.client.clustering.UserClustering;
 import com.shale.client.conceptmap.MainView;
 import com.shale.client.utils.Languages;
@@ -27,12 +27,19 @@ import com.shale.client.utils.Mouse;
 import com.shale.client.utils.MyClickHandler;
 import com.shale.client.utils.MyDiagramModel;
 
+/**
+ * Basic Element of the Concept Map. Linking phrases and concepts extend
+ * @author Istovatis -- istovatis@gmail.com --
+ *
+ */
 public class MapElement extends Label implements HasAllTouchHandlers,
 		IsDiagramSerializable, ContextMenuHandler {
 	Dictionary dict;
 	protected PopupPanel contextMenu;
 	protected MenuItem neighborMenuItem;
 	protected Widget widget;
+	
+	private NeighborWordsCollector wordsCollector;
 
 	protected String content;
 	protected String identifier;
@@ -64,7 +71,7 @@ public class MapElement extends Label implements HasAllTouchHandlers,
 		super(content);
 		this.content = content;
 
-		initWidget(this.widget);
+		initWidget(content);
 
 		// of course it would be better if base would implement
 		// HasContextMenuHandlers, but the effect is the same
@@ -330,7 +337,7 @@ public class MapElement extends Label implements HasAllTouchHandlers,
 		this.contextMenu.show();
 	}
 
-	protected void initWidget(Widget widget) {
+	protected void initWidget(String text) {
 		this.contextMenu = new ContextMenu();
 		String renameTxt = Languages.getDictionary().get("rename");
 		String deleteTxt = Languages.getDictionary().get("del");
@@ -341,6 +348,9 @@ public class MapElement extends Label implements HasAllTouchHandlers,
 		addDeleteOption(deleteTxt);
 		addToClusterOption(addToClusterTxt);
 		findHelpfulWords(findHelpfulWordsTxt);
+		
+		wordsCollector = new NeighborWordsCollector(text);
+		wordsCollector.askForNeighbors();
 	}
 	
 	/**
@@ -404,13 +414,9 @@ public class MapElement extends Label implements HasAllTouchHandlers,
 				true, new Command() {
 					public void execute() {
 						Concept widget = (Concept) widgetList.get(getCurrentLabelPos());
-						NeighborWordsCollector wordsCollector = new NeighborWordsCollector(widget.getText());
-						ArrayList<String> neighborWords = wordsCollector.findNeighors();
-						neighborWords.add("yo");
-						neighborWords.add("This is amazing");
-						neighborWords.add("Πολύ σωστά");
+						UimaResponse neighborWords = wordsCollector.getNeighors();
 						contextMenu.getWidget().getOffsetHeight();
-						NeighborMenu list = new NeighborMenu(neighborWords, widget.getAbsoluteTop(), widget.getAbsoluteTop());		
+						NeighborMenu list = new NeighborMenu(neighborWords.getWords(), widget.getAbsoluteTop(), widget.getAbsoluteTop());		
 						neighborMenuItem.setSubMenu(NeighborMenu.getMenuBar());
 					}
 				});

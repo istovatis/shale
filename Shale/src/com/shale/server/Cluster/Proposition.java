@@ -1,5 +1,10 @@
 package com.shale.server.Cluster;
 
+/**
+ * The proposition representation in server side
+ * @author Istovatis -- istovatis@gmail.com --
+ *
+ */
 class Proposition {
 
 	String id;
@@ -21,29 +26,14 @@ class Proposition {
 		this.linkingPhrase = phrase;
 	}
 
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
+	public String getId() { return id; }
+	public void setId(String id) { this.id = id; }
 	
-	public Concept getToConcept() {
-		return toConcept;
-	}
-
-	public void setToConcept(Concept toConcept) {
-		this.toConcept = toConcept;
-	}
+	public Concept getToConcept() { return toConcept; }
+	public void setToConcept(Concept toConcept) { this.toConcept = toConcept; }
 	
-	public Concept getFromConcept() {
-		return fromConcept;
-	}
-
-	public void setFromConcept(Concept fromConcept) {
-		this.fromConcept = fromConcept;
-	}
+	public Concept getFromConcept() { return fromConcept; }
+	public void setFromConcept(Concept fromConcept) { this.fromConcept = fromConcept; }
 
 	public String toString() {
 

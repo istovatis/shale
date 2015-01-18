@@ -44,7 +44,6 @@ public class ExportServiceImpl extends RemoteServiceServlet implements
 		} else
 			url = getServletContext().getRealPath(dir);
 		url = url + slash;
-		// System.out.println("From:saveFile url:"+url+" filename"+fileName);
 		File exportFile = new File(url + fileName);
 		try {
 			exportFile.createNewFile();
@@ -110,8 +109,6 @@ public class ExportServiceImpl extends RemoteServiceServlet implements
 				FileChannel oc = new FileOutputStream(targetLocation)
 						.getChannel();
 				ic.transferTo(0, ic.size(), oc);
-				//System.out.println("!!!"+sourceLocation.getAbsolutePath().toString());
-				//System.out.println("@@@"+sourceLocation.getAbsolutePath().toString());
 				ic.close();
 				oc.close();
 			} catch (IOException e) {

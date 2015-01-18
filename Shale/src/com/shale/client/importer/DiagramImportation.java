@@ -23,6 +23,13 @@ import com.shale.client.savedmap.Metadata;
 import com.shale.client.user.User;
 import com.shale.client.utils.MyDiagramModel;
 
+/**
+ * Retrieves an XML representation of the map and builds a diagram
+ * representation based on this map.
+ * 
+ * @author Istovatis -- istovatis@gmail.com --
+ *
+ */
 public class DiagramImportation extends DiagramSerializationService {
 	
 	public static int maxId = 0;

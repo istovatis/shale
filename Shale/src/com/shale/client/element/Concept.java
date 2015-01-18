@@ -13,6 +13,15 @@ import com.shale.client.utils.MyDiagramController;
 import com.shale.client.utils.MyDiagramModel;
 import com.shale.client.utils.Savable;
 
+/**
+ * Concept is the main abstraction or generalization that is provided by user to
+ * clarify his knowledge to the given topic. Concepts have a text which is
+ * actually set by user. In concept map concepts have a certain position in the
+ * map.
+ * 
+ * @author Istovatis -- istovatis@gmail.com --
+ *
+ */
 public class Concept extends MapElement implements Savable {
 
 	protected ContextMenu menu;
@@ -83,17 +92,6 @@ public class Concept extends MapElement implements Savable {
 		Clustering.isChanged = true;
 		Metadata.get().removeFromCluster(id);
 		MyDiagramController.addedConcepts--;
-		// widgetList.remove(position);
-		/*
-		 * System.out.println("incoming..."+model.getNumberOfIncomingLinks(widget
-		 * )); String id = widget.getElement().getId();
-		 * System.out.println("id:"+(position+1)); for(LinkModel link :
-		 * linkRepresentationSet){ if(link.startId.equals(id))
-		 * linkRepresentationSet.remove(link); }
-		 */
-
-		// MainView.diagramController.deleteWidget(widget);
-		// widgetList.remove(position);
 		
 		//add creator label to Map diagram 
 		MainView.attachCreator();

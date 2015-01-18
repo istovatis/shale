@@ -3,6 +3,11 @@ package com.shale.client.login;
 import com.google.gwt.place.shared.Place;
 import com.google.gwt.place.shared.PlaceTokenizer;
 
+/**
+ * The place that is correlated with the Login View 
+ * @author Istovatis -- istovatis@gmail.com --
+ *
+ */
 public class LoginPlace extends Place{
 	
 	private String loginToken;

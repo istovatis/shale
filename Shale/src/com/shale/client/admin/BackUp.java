@@ -1,11 +1,3 @@
-/**
- * Class to back up folders and the files containing. Essential folders such as
- *  "tei" and "anatolia" containing all concept maps, so as
- * teachers.cxl and students.cxl containing all users must me backed up. 
- * The target location is se to server side @ExportServicempl class as C:\\dastasvn\cmap.
- * The folder name that contains all back up files is the current date.
- */
-
 package com.shale.client.admin;
 
 import java.util.Date;
@@ -17,6 +9,17 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.shale.client.exporter.ExportService;
 import com.shale.client.exporter.ExportServiceAsync;
 
+/**
+ * A Back Up tool provided only to Admins. folders and the files containing are
+ * backed up. Essential folders such as "tei" and "anatolia" containing all
+ * concept maps, so as teachers.cxl and students.cxl containing all users must
+ * me backed up. The target location is se to server side @ExportServicempl
+ * class as C:\\dastasvn\cmap. The folder name that contains all back up files
+ * is the current date.
+ * 
+ * @author Istovatis -- istovatis@gmail.com --
+ *
+ */
 public class BackUp {
 	public String outDir;
 	public String name;

@@ -2,13 +2,15 @@ package com.shale.client.Uima;
 
 import java.util.ArrayList;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.http.client.RequestBuilder;
 import com.google.gwt.http.client.Request;
 import com.google.gwt.http.client.RequestCallback;
 import com.google.gwt.http.client.RequestException;
 import com.google.gwt.http.client.URL;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.http.client.Response;
+import com.github.nmorel.gwtjackson.client.ObjectMapper;
+import com.github.nmorel.gwtjackson.client.ObjectReader;
 
 /**
  * Committing a POST Rest call by providing a word and the number of neighbor words to search for
@@ -19,7 +21,12 @@ import com.google.gwt.http.client.Response;
 public class NeighborWordsCollector {
 	private String word;	// Word to provide so as to find neighbor words
 	private int numWords;	// number of similar words to find
-	private final static String serviceLocation = "http://83.212.121.195:8080/StructedInfoService-0.0.1-SNAPSHOT/resources/wordTie/topk/"; 
+	private final static String serviceLocation = "http://83.212.121.195:8080/StructedInfoService-0.0.2-SNAPSHOT/resources/wordTie/topk/"; 
+	
+	public static interface UimaResponseReader extends ObjectReader<UimaResponse> {}
+	private static final UimaResponseReader UIMA_RESPONSE_READER = GWT.create( UimaResponseReader.class );
+	public static interface UimaMapper extends ObjectMapper<UimaResponse> {}
+	private UimaResponse uimaResponse;
 	
 	public String getWord() { return word; }
 	public void setWord(String word) { this.word = word; }
@@ -36,9 +43,8 @@ public class NeighborWordsCollector {
 		this.word = word;
 	}
 	
-	public ArrayList<String> findNeighors() {
-		askForNeighbors();
-		return new ArrayList<String>();
+	public UimaResponse getNeighors() {
+		return uimaResponse;
 	}
 	
 	public void askForNeighbors() {
@@ -54,16 +60,7 @@ public class NeighborWordsCollector {
 			RequestCallback callBack) {
 		RequestBuilder builder = new RequestBuilder(RequestBuilder.POST, URL.encode(apiUrl));
 		try {
-			builder.setHeader("Content-Type", "application/json");
-			builder.setHeader("Access-Control-Allow-Origin", "*");
-			builder.setHeader("Access-Control-Allow-Methods",
-		            "POST, GET, OPTIONS, DELETE");
-			builder.setHeader("Access-Control-Max-Age", "3600");
-			builder.setHeader("Access-Control-Allow-Headers", "x-requested-with");
-			builder.sendRequest(null, callBack);
-			
-			
-			
+			builder.sendRequest(null, callBack);			
 		} catch (RequestException e) { 
 			System.out.println("Couldn't connect to server. Reason: " + e.getMessage());
 		}
@@ -83,12 +80,13 @@ public class NeighborWordsCollector {
 						+ response.getStatusText();
 			}
 			System.out.println(respText + response.getText());
+			readResponse(response);
 		}
-	};
+	};	
 	
-//	protected void doOptions(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//	    response.addHeader("Access-Control-Allow-Origin", "*");
-//	    response.addHeader("Access-Control-Allow-Methods", "POST, GET");
-//	}
-	
+	private void readResponse(Response response) {
+		UimaMapper mapper = GWT.create( UimaMapper.class );
+		uimaResponse = UIMA_RESPONSE_READER.read( response.getText() );
+		 
+	}
 }

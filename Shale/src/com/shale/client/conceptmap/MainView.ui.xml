@@ -13,15 +13,15 @@
 				<g:VerticalPanel height="135px" width="72px"
 					spacing="10" visible="true" styleName="menuLine">
 					<g:Image ui:field="newItemIcon" width="48px" height="48px"
-						url="gwtexperimentals/gwt/clean/images/icons/add_concept.png"
+						url="shale/gwt/clean/images/icons/add_concept.png"
 						styleName="iconButtons" title = "Create a new concept"></g:Image>
 					<g:Image ui:field="exportIcon" width="48px" height="48px"
-						url="gwtexperimentals/gwt/clean/images/icons/save.png" styleName="iconButtons" title = "Save the concept map"/>
+						url="shale/gwt/clean/images/icons/save.png" styleName="iconButtons" title = "Save the concept map"/>
 					<g:Button width="41px" height="41px" ui:field="importBtn"
 						styleName="h1" text="" visible="false">Open concept map</g:Button>
 					<g:VerticalPanel>
 						<g:Image ui:field="clusterIcon"
-							url="gwtexperimentals/gwt/clean/images/icons/clusterize.png"
+							url="shale/gwt/clean/images/icons/clusterize.png"
 							styleName="iconButtons" width="48px" height="48px " title = "See the main core issues of the map as created by system"/>
 						<g:HorizontalPanel>
 							<g:Button text="-" styleName="h1" ui:field="decrease"
@@ -33,7 +33,7 @@
 					</g:VerticalPanel>
 					<g:VerticalPanel>
 						<g:Image ui:field="userClusterIcon"
-							url="gwtexperimentals/gwt/clean/images/icons/userCluster2.png"
+							url="shale/gwt/clean/images/icons/userCluster2.png"
 							styleName="iconButtons" width="48px" height="48px" title = "Create core issues"/>
 						<g:HorizontalPanel>
 							<g:Button focus="true" styleName="h1" text="$" visible="false"
@@ -45,7 +45,7 @@
 					</g:VerticalPanel>
 					<g:VerticalPanel styleName="menuLine">
 						<g:Image ui:field="similarityIcon" width="48px" height="48px"
-							url="gwtexperimentals/gwt/clean/images/icons/similarity.png"
+							url="shale/gwt/clean/images/icons/similarity.png"
 							styleName="iconButtons" title = "See the similarity between your core issues and the core issues provided by system"/>
 						<g:Label ui:field="SimilarityLabel" styleName="gwt-PushButton" />
 					</g:VerticalPanel>
@@ -62,7 +62,7 @@
 			<g:VerticalPanel ui:field="nameClustersPanel">
 				<g:Cell horizontalAlignment="ALIGN_RIGHT">
 					<g:Image ui:field="closeClustersIcon" height="16px" width="16px"
-						url="gwtexperimentals/gwt/clean/images/icons/icon_close_alt.png"
+						url="shale/gwt/clean/images/icons/icon_close_alt.png"
 						visible="false" />
 				</g:Cell>
 				<p1:CellTable ui:field="cellTable" width="102px"

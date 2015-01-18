@@ -14,6 +14,15 @@ import com.shale.client.utils.Languages;
 import com.shale.client.utils.MyDiagramModel;
 import com.shale.client.utils.Savable;
 
+/**
+ * Linking Phrase is the clue between the concepts. Although it is not taken
+ * account when analysing the map, linking phrases help user to expand the whole
+ * concept map. Linking phrase has its own text and a certain position in the
+ * map.
+ * 
+ * @author Istovatis -- istovatis@gmail.com --
+ *
+ */
 public class LinkingPhrase extends MapElement implements Savable {
 
 	public LinkingPhrase(String content) {
@@ -53,7 +62,11 @@ public class LinkingPhrase extends MapElement implements Savable {
 		MainView.diagramController.deleteWidget(widget);
 		Clustering.isChanged = true;
 	}
-
+	
+	/**
+	 * Wrap the beginning and the end concept and add a connection between them.
+	 * @param name
+	 */
 	public void drawLinkingPhrase(String name) {
 		MapElement mapElement = new MapElement();
 		int startWidgetPos = mapElement.getStartLabelPos();
@@ -99,7 +112,7 @@ public class LinkingPhrase extends MapElement implements Savable {
 		MainView.diagramController.addWidget(linkingPhrase, left, top);
 	}
 
-	protected void initWidget(Widget widget) {
+	protected void initWidget(String text) {
 		this.contextMenu = new ContextMenu();
 		String ren = Languages.getDictionary().get("rename");
 		String reverse = "Reverse Direction";

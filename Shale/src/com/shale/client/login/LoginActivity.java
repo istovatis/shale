@@ -8,6 +8,11 @@ import com.google.gwt.user.client.ui.AcceptsOneWidget;
 
 import com.shale.client.app.ClientFactory;
 
+/**
+ * Login Activity. Its main purpose is the redirection to the assigned place.
+ * @author Istovatis -- istovatis@gmail.com --
+ *
+ */
 public class LoginActivity extends AbstractActivity{
 	
 	ClientFactory clientFactory;

@@ -21,6 +21,13 @@ import com.shale.client.user.User;
 import com.shale.client.utils.Languages;
 import com.shale.client.utils.MyDiagramModel;
 
+/**
+ * Export the concept map by representing the created Concept Map into an XML
+ * formatted document. This document is then stored to server.
+ * 
+ * @author Istovatis -- istovatis@gmail.com --
+ *
+ */
 public class DiagramExportation extends DiagramSerializationService {
 
 	String diagram;

@@ -1,7 +1,3 @@
-/*
- * Concept map editor. 
- * The first page shown to user in order to login the system.
- */
 package com.shale.client.login;
 
 import com.google.gwt.core.client.GWT;
@@ -34,6 +30,15 @@ import com.shale.client.user.Teacher;
 import com.shale.client.user.User;
 import com.shale.client.utils.Languages;
 
+
+/**
+ * This is the first view presented to user when entering the map. User inserts
+ * username and password. Credentials are checked at the server and authorized
+ * user is allowed to proceed to Menu View.
+ * 
+ * @author Istovatis -- istovatis@gmail.com --
+ *
+ */
 public class LoginView extends Composite implements HasText {
 	
 	@UiField public static Button cancel;

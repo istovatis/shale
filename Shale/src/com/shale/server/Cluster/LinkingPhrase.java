@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ * The linking phrase representation in server side
+ * @author Istovatis -- istovatis@gmail.com --
+ *
+ */
 class LinkingPhrase {
 
 	String id;

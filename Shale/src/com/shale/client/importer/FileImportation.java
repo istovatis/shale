@@ -6,6 +6,11 @@ import com.shale.client.user.Student;
 import com.shale.client.user.Teacher;
 import com.shale.client.user.User;
 
+/**
+ * Imports a file given the selected username and directory to search/
+ * @author Istovatis -- istovatis@gmail.com --
+ *
+ */
 public abstract class FileImportation {
 
 	private ImportServiceAsync importSvc = GWT.create(ImportService.class);

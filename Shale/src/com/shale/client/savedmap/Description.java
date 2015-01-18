@@ -21,6 +21,13 @@ import com.shale.client.importer.ImportServiceAsync;
 import com.shale.client.user.Teacher;
 import com.shale.client.user.User;
 
+/**
+ * Concept map description. This description is set by teacher and helps
+ * students to determine the nature of the given problem or issue.
+ * 
+ * @author Istovatis -- istovatis@gmail.com --
+ *
+ */
 public class Description extends FileImportation {
 
 	private String name;

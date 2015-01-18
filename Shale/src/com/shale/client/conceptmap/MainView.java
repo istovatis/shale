@@ -52,7 +52,11 @@ import com.shale.client.utils.MyDiagramController;
 import com.shale.client.utils.MyDiagramModel;
 
 /**
- * The main view
+ * The main view provided to user. Main view contains two basic elements:
+ * Firstly the column in the right where all functionality buttons and view
+ * areas are placed. The second one is the actual concept map editor, the area
+ * where concepts and linking phrases are created. This is also the place where
+ * clusters are visualized.
  * 
  * @author istovatis
  * 
