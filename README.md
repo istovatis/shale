@@ -14,3 +14,4 @@ Major features:
 * User management 
 * Apache UIMA integration
 * WordNet support
+* Multilingual support with i18n library. (Currently English and Greek supported)
