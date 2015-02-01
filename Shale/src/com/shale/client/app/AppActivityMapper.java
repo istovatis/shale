@@ -13,6 +13,11 @@ import com.shale.client.menu.MenuPlace;
 import com.shale.client.user.insert.InsertActivity;
 import com.shale.client.user.insert.InsertPlace;
 
+/**
+ * A mapper that creates a map between a place and the corresponding activity
+ * @author Istovatis -- istovatis@gmail.com --
+ *
+ */
 public class AppActivityMapper implements ActivityMapper {
 	private ClientFactory clientFactory;
 

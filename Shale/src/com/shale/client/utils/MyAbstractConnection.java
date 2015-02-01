@@ -26,13 +26,12 @@ public class MyAbstractConnection extends AbstractConnection{
 	
 	@Override
 	protected void draw(Point p1, Point p2, boolean lastPoint) {
-		// TODO Auto-generated method stub
-		
+		// Do not do anything particular
 	}
 
 	@Override
 	protected void draw(List<Point> pointList) {
-		
+		// Do not do anything particular
 	}
 	
 	@Override

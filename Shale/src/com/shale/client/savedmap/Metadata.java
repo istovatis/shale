@@ -28,7 +28,7 @@ import com.shale.client.user.User;
 import com.shale.client.utils.Languages;
 
 /**
- * This class is responsible for saving and loading metadata of the concept
+ * Saving and loading metadata of the concept
  * maps. Metadata include information about the system and the user-defined
  * clusters
  * 
@@ -245,13 +245,8 @@ public class Metadata {
 		System.out.println(sysCluster + " stored system clusters");
 	}
 
-	public int getSysCluster() {
-		return sysCluster;
-	}
-
-	public void setSysCluster(int sysCluster) {
-		this.sysCluster = sysCluster;
-	}
+	public int getSysCluster() { return sysCluster; }
+	public void setSysCluster(int sysCluster) { this.sysCluster = sysCluster; }
 	
 	/**
 	 * Remove widget according to its id, from a user defined cluster that belongs

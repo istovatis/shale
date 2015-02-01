@@ -32,8 +32,7 @@ public class BetweenClusters {
 	private int numEdgesBetClusters; // count edges between two clusters
 	private int numClusters; // The number of clusters
 	private int[] rowSum; // Number of connected edges. ex when
-										// rowSum[3]=5,
-	// cluster 3 has 5 connected edges
+						 // rowSum[3]=5, cluster 3 has 5 connected edges
 	private ArrayList<Integer> zeroClusters; // clusters with zero connections
 	private String label;	// Label of MainView to be valued.
 
@@ -51,9 +50,8 @@ public class BetweenClusters {
 	}
 
 	public void clusterAllConnections() {
-		for (int i = 0; i < graph.size(); i++) {
+		for (int i = 0; i < graph.size(); i++)
 			clusterConnections(i);
-		}
 	}
 
 	/**
@@ -67,7 +65,7 @@ public class BetweenClusters {
 	 * @return
 	 */
 	public int clusterConnections(int cluster) {
-		System.out.println(cluster + "********");
+		System.out.println("Calculating connections for cluster: " + cluster);
 		int contains = 0;
 		int edge;
 		betweenClustersCounter[cluster][cluster] = 0;
@@ -84,27 +82,21 @@ public class BetweenClusters {
 				contains++;
 				edge++;
 			}
-			if (edge == 1) {
-				for (int i = 0; i < numClusters; i++) {
-					if (i != cluster) {
+			if (edge == 1)
+				for (int i = 0; i < numClusters; i++)
+					if (i != cluster)
 						if (graph.get(i).contains(concept[0])) {
 							betweenClustersCounter[cluster][i]++;
 							betweenClustersCounter[i][cluster]++;
 						}
-					}
-				}
 				numEdgesBetClusters++;
-			}
-			if (edge == 2) {
-				// System.out.print("before cluster " + cluster + ": "
-				// + betweenClustersCounter[cluster][cluster] + "with "
-				// + concept[0] + " and " + concept[1]);
+
+			if (edge == 2)
 				betweenClustersCounter[cluster][cluster] += 2;
-			}
 		}
-		if(contains==0){
+		if (contains == 0)
 			zeroClusters.add(cluster);
-		}
+
 		rowSum[cluster] = contains;
 		showConncectedPairs();
 		return contains;
@@ -137,14 +129,12 @@ public class BetweenClusters {
 	 */
 	public void showConncectedPairs() {
 		for (int i = 0; i < numClusters; i++) {
-			for (int j = 0; j < numClusters; j++) {
+			for (int j = 0; j < numClusters; j++)
 				System.out.println(i + "with" + j + " has"
 						+ betweenClustersCounter[i][j] + " connected");
-			}
 			System.out.println();
 		}
-		System.out
-				.println("Edge between clusters = " + numEdgesBetClusters / 2);
+		System.out.println("Edge between clusters = " + numEdgesBetClusters / 2);
 	}
 
 	/**
@@ -168,7 +158,6 @@ public class BetweenClusters {
 					+ " - " + power+" "+rowSum[i]+" "+betweenClustersCounter[i][i]);
 			modularity -= (float) power;
 		}
-
 		setQLabelText();
 	}
 
@@ -211,13 +200,9 @@ public class BetweenClusters {
 		return graph.size();
 	}
 
-	public ArrayList<Integer> getZeroClusters() {
-		return zeroClusters;
-	}
+	public ArrayList<Integer> getZeroClusters() { return zeroClusters; }
 	
-	public void setLabel(String label){
-		this.label = label;
-	}
+	public void setLabel(String label){ this.label = label; }
 	
 	/**
 	 * Return a 3 digit precision of the given value

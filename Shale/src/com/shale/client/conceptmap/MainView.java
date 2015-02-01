@@ -144,7 +144,14 @@ public class MainView extends Composite {
 	public MainView() {
 		initWidget(uiBinder.createAndBindUi(this));
 	}
-
+	
+	/**
+	 * MainView loads whenever a new concept map is presented to user. It
+	 * creates a DragController for each logical area where a set of draggable
+	 * widgets and drop targets will be allowed to interact with one another.
+	 * 
+	 * @param content
+	 */
 	public MainView(String content) {
 
 		initWidget(uiBinder.createAndBindUi(this));
@@ -152,12 +159,7 @@ public class MainView extends Composite {
 		diagramController.showGrid(true);
 		focusPanel.add(diagramController.getView());
 
-		// Create a DragController for each logical area where a set of
-		// draggable
-		// widgets and drop targets will be allowed to interact with one
-		// another.
-		dragController = new PickupDragController(diagramController.getView(),
-				true);
+		dragController = new PickupDragController(diagramController.getView(), true);
 
 		// Positioner is always constrained to the boundary panel
 		// Use 'true' to also constrain the draggable or drag proxy to the
@@ -348,11 +350,10 @@ public class MainView extends Composite {
 		} else {
 			// if map has changed (user added or deleted concept or linking phrase),
 			// save first and then cluster.
-			if (Clustering.isChanged) {
+			if (Clustering.isChanged)
 				saveFile();
-			}else{
+			else
 				cluster.getClustersRPC();
-			}
 		}
 	}
 
@@ -365,7 +366,7 @@ public class MainView extends Composite {
 		itemName.setFocus(true);
 	}
 
-	// elegxos tou typeLabel kai eisagwgi eite linking phrase eite concept
+	// TypeLabel checking and insertion of the concept or the linkning phraseeite concept
 	@UiHandler("ok")
 	public void onOkClick(ClickEvent e) {
 		String name = itemName.getText();
@@ -546,13 +547,8 @@ public class MainView extends Composite {
 		addUserInfoPanel();
 	}
 
-	public static int getGraphCounter() {
-		return graphCounter;
-	}
-
-	public static void setGraphCounter(int graphCounter) {
-		MainView.graphCounter = graphCounter;
-	}
+	public static int getGraphCounter() { return graphCounter; }
+	public static void setGraphCounter(int graphCounter) { MainView.graphCounter = graphCounter; }
 
 	public void resetGraphCounter() {
 		graphCounter = 1;
@@ -592,9 +588,8 @@ public class MainView extends Composite {
 		removeInsertItemPanel();
 		removeClustersPanel();
 		removeUserInfoPanel();
-		if (creator.isAttached()) {
+		if (creator.isAttached())
 			diagramController.deleteWidget(creator);
-		}
 	}
 
 	public static void removeInsertItemPanel() {
@@ -605,9 +600,8 @@ public class MainView extends Composite {
 	}
 	
 	public static void removeClustersPanel() {
-		if (nameClustersPanel.isAttached()) {
+		if (nameClustersPanel.isAttached())
 			diagramController.deleteWidget(nameClustersPanel);
-		}
 	}
 	
 	public static void addNameClusterPanel(){
@@ -621,9 +615,8 @@ public class MainView extends Composite {
 	}
 	
 	public static void removeUserInfoPanel() {
-		if (userInfoPanel.isAttached()) {
+		if (userInfoPanel.isAttached())
 			diagramController.deleteWidget(userInfoPanel);
-		}
 	}
 	
 	public void showUserCluster(){

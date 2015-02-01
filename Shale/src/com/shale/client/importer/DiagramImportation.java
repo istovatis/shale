@@ -25,7 +25,7 @@ import com.shale.client.utils.MyDiagramModel;
 
 /**
  * Retrieves an XML representation of the map and builds a diagram
- * representation based on this map.
+ * representation based on this map. Map contains concepts and linking phrases.
  * 
  * @author Istovatis -- istovatis@gmail.com --
  *
@@ -33,10 +33,12 @@ import com.shale.client.utils.MyDiagramModel;
 public class DiagramImportation extends DiagramSerializationService {
 	
 	public static int maxId = 0;
+	public static int getMaxId(){ return maxId; }
+	public static void setMaxId(int max){ maxId = max; }
 
 	private ImportServiceAsync importSvc = GWT.create(ImportService.class);
 
-	/*
+	/**
 	 * Parses xml file and passes a DiagramModel to DiagramController
 	 */
 	public static MyDiagramModel importDiagrams(String xml) {
@@ -132,24 +134,14 @@ public class DiagramImportation extends DiagramSerializationService {
 			diagramRepresentation.addLink(link);
 		}
 
-		Set<LinkingPhraseModel> linkSet = diagramRepresentation
-				.getLinkRepresentationSet();
-		/*
-		 * for (LinkingPhraseModel el : linkSet) {
-		 * System.out.println("********************"); System.out.println(el.id
-		 * + el.decoration.content + " start:" + el.startId + el.endId +
-		 * "coordinates: " + el.startId + el.endId); }
-		 */
-		
+		Set<LinkingPhraseModel> linkSet = diagramRepresentation.getLinkRepresentationSet();	
 		diagramRepresentation.setConnectedConcepts();
 		
 		return diagramRepresentation;
 	}
 
 	public static String format(String xml) {
-		xml = xml.replace(':', '-');
-
-		return xml;
+		return xml.replace(':', '-');
 	}
 
 	/**
@@ -198,20 +190,10 @@ public class DiagramImportation extends DiagramSerializationService {
 		for (int i = 0; i < dcDescripion.getLength(); i++) {
 			Node desc = (Node) dcDescripion.item(i);
 			int len = desc.getFirstChild().getNodeValue().length();
-			if (len > 0) {
+			if (len > 0)
 				description = desc.getFirstChild().getNodeValue();
-			}
 			MainView.FQLabel.setText(description);
 		}
 		return description;
-	}
-	
-	public static int getMaxId(){
-		return maxId;
-	}
-	
-	public static void setMaxId(int max){
-		maxId = max;
-	}
-	
+	}	
 }

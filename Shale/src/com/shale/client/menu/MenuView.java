@@ -29,59 +29,38 @@ import com.shale.client.utils.Languages;
 public class MenuView extends Composite {
 
 	private MenuActivity menuActivity;
-	private static MenuViewUiBinder uiBinder = GWT
-			.create(MenuViewUiBinder.class);
+	private static MenuViewUiBinder uiBinder = GWT.create(MenuViewUiBinder.class);
 
 	Dictionary dict;
 	Dictionary winDict;
-	@UiField
-	public static Label username;
-	@UiField
-	public HorizontalPanel namePanel;
-	@UiField
-	public HorizontalPanel orgPanel;
-	@UiField
-	public static Label organisation;
-	@UiField
-	public static ListBox myStudentsList;
-	@UiField
-	public static Tree myStudentsTree;
-	@UiField
-	public static ListBox myMapsList;
-	@UiField
-	public static Label mapLabel;
-	@UiField
-	public static Label studentLabel;
-//	static @UiField
-//	Image openBtn;
-	@UiField
-	public static Label groupLabel;
-	@UiField
-	public static Label orgLabel;
-//	static @UiField
-//	Button addStudentBtn;
-	@UiField
-	public HorizontalPanel teacherPanel;
-//	static @UiField
-//	Image newMapBtn;
-	@UiField
-	public static VerticalPanel UserInfosPanel;
-	@UiField
-	public static Image logout;
-	@UiField
-	public static Button backUpBtn;
-	@UiField 
-	public static Image openIcon;
-	@UiField
-	public Image newMapIcon;
-	@UiField
-	public static Image addStudentIcon;
+	@UiField public static Label username;
+	@UiField public HorizontalPanel namePanel;
+	@UiField public HorizontalPanel orgPanel;
+	@UiField public static Label organisation;
+	@UiField public static ListBox myStudentsList;
+	@UiField public static Tree myStudentsTree;
+	@UiField public static ListBox myMapsList;
+	@UiField public static Label mapLabel;
+	@UiField public static Label studentLabel;
+	@UiField public static Label groupLabel;
+	@UiField public static Label orgLabel;
+	@UiField public HorizontalPanel teacherPanel;
+	@UiField public static VerticalPanel UserInfosPanel;
+	@UiField public static Image logout;
+	@UiField public static Button backUpBtn;
+	@UiField public static Image openIcon;
+	@UiField public Image newMapIcon;
+	@UiField public static Image addStudentIcon;
+	
 	Teacher teacher = new Teacher();
 	Student student = new Student();
 
 	interface MenuViewUiBinder extends UiBinder<Widget, MenuView> {
 	}
-
+	
+	/**
+	 * Get current language and insert all respective widgets.
+	 */
 	public MenuView() {
 		initWidget(uiBinder.createAndBindUi(this));
 
@@ -141,13 +120,12 @@ public class MenuView extends Composite {
 
 			user = myStudentsList.getItemText(index);
 			if (User.getGroup().equals("teacher")) {
-				if (user.equals(User.getUsername())) {
+				if (user.equals(User.getUsername())) 
 					user = "admin" + "-" + user;
-				}
 			} else if (User.getGroup().equals("student")) {
-				if (user.equals(User.getUsername())) {
+				if (user.equals(User.getUsername()))
 					user = User.getUsername();
-				} else if (user.equals(Student.getMyTeacher())) {
+				else if (user.equals(Student.getMyTeacher())) {
 					String myTeacher = Student.getMyTeacher();
 					user = "admin" + "-" + myTeacher;
 				}
@@ -188,9 +166,8 @@ public class MenuView extends Composite {
 
 	@UiHandler("addStudentIcon")
 	public void onAddStudentIconClick(ClickEvent e) {
-		if (User.getGroup().equals("teacher")) {
+		if (User.getGroup().equals("teacher"))
 			menuActivity.goTo(new InsertPlace());
-		}
 	}
 
 	@UiHandler("logout")
@@ -204,12 +181,9 @@ public class MenuView extends Composite {
 	public void backUp() {
 		String[] admins = { "kehris", "Administrator" };
 		String loginUser = User.getUsername();
-		for (String admin : admins) {
-			if (loginUser.equals(admin)) {
+		for (String admin : admins)
+			if (loginUser.equals(admin))
 				backUpBtn.setVisible(true);
-			}
-		}
-
 	}
 
 	@UiHandler("backUpBtn")

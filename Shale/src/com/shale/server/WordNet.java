@@ -47,7 +47,6 @@ public class WordNet {
 		try {
 			this.url = new URL("file", null, path);
 		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		dict = new Dictionary(url);

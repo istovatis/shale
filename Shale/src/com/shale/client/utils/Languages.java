@@ -7,6 +7,12 @@ import com.shale.client.menu.MenuView;
 import com.shale.client.user.User;
 import com.shale.client.user.insert.InsertView;
 
+/**
+ * Setting the dictionary comprising English and Greek language. 
+ * The definition and functionality of Dictionary are provided by i18n library.
+ * @author Istovatis -- istovatis@gmail.com --
+ *
+ */
 public class Languages {
 
 	private static Dictionary dictionary;
@@ -44,7 +50,10 @@ public class Languages {
 	
 	public static void nameMenuViewButtons(String open, String student, String newMap, String logout) { }
 	
-	//MainView
+	/**
+	 * Setting buttons linked with Main View.
+	 * @param dict
+	 */
 	public static void setMainviewButtons(Dictionary dict) {
 		String newCon = dict.get("newCon");
 		String save = dict.get("save");

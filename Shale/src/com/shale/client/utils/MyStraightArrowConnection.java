@@ -11,7 +11,6 @@ import com.orange.links.client.utils.Segment;
 /**
  * Currently unused. Created so as to include "change direction" option at every linking phrase
  */
-
 public class MyStraightArrowConnection extends MyAbstractConnection {
 	
 	

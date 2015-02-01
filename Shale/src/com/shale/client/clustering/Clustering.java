@@ -6,6 +6,12 @@ import java.util.Set;
 import com.google.gwt.view.client.HasData;
 import com.google.gwt.view.client.ListDataProvider;
 
+/**
+ * A definition of a group of clusters which combination is a concept map.s 
+ * A cluster is regarded as a group of concepts that form a core issue of a given map.
+ * @author Istovatis -- istovatis@gmail.com --
+ *
+ */
 public abstract class Clustering {
 	// The provider that holds the list of clusters
 	protected static ListDataProvider<ClusterInfo> dataProvider = new ListDataProvider<ClusterInfo>();
@@ -29,14 +35,12 @@ public abstract class Clustering {
 	 * Add a display to the database. The current range of interest of the
 	 * display will be populated with data.
 	 *
-	 * @param display
-	 *            a {@Link HasData}.
+	 * @param display a {@Link HasData}.
 	 */
 	public void addDataDisplay() {
 		Set<HasData<ClusterInfo>> displays = dataProvider.getDataDisplays();
-		if (displays.size() == 0) {
+		if (displays.size() == 0)
 			dataProvider.addDataDisplay(display);
-		}
 	}
 
 	public void setDataDisplay(HasData<ClusterInfo> display) {
@@ -48,7 +52,6 @@ public abstract class Clustering {
 	}
 
 	public void findSimilarity(ArrayList<ArrayList<Integer>> graph1,
-			ArrayList<ArrayList<Integer>> graph2) {
-		// Integer[][] matrix = new Integer[][];
+		ArrayList<ArrayList<Integer>> graph2) {
 	}
 }

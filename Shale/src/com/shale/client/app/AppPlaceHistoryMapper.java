@@ -6,7 +6,7 @@ import com.shale.client.conceptmap.MainPlace;
 import com.shale.client.menu.MenuPlace;
 import com.shale.client.user.insert.InsertPlace;
 
-/*
+/**
  * Determines the tokens that connect Place to History
  */
 

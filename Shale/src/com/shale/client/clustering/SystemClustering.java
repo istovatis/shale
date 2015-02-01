@@ -25,7 +25,12 @@ import com.shale.client.utils.MyDiagramModel;
 
 /**
  * This class communicates with the server in order to partition diagram into
- * clusters. To communicate with the server it uses RPC.
+ * clusters. To communicate with the server it uses RPC. The clustered 
+ * 
+ * It performs also concept clustering based on Girvan-Newman method. 
+ * It can also colour concepts based on the clustering results. 
+ * Clustering can also be performed in the metadata retrieved from file parsing.
+ * 
  * 
  * @author istovatis
  * 
@@ -53,17 +58,12 @@ public class SystemClustering {
 	private static ArrayList<Integer[]> connectedConcepts;
 	
 	ArrayList<ArrayList<Integer>> cpReturnGraphs;
-//	int[] clusteredConnected;
-
 	MyDiagramModel model;
 
 	/**
 	 * Information about a cluster.
 	 */
 	public static class SysClusterInfo implements Comparable<SysClusterInfo> {
-
-		private String name;
-
 		@Override
 		public int compareTo(SysClusterInfo arg0) {
 			return 0;
@@ -88,13 +88,9 @@ public class SystemClustering {
 		MainView.setGraphCounter(1);
 	}
 
-	public int getCurrentGraphs() {
-		return currentGraphs;
-	}
+	public int getCurrentGraphs() { return currentGraphs; }
 	
-	public static ArrayList<Integer[]> getConnectedConcepts() {
-		return connectedConcepts;
-	}
+	public static ArrayList<Integer[]> getConnectedConcepts() { return connectedConcepts; }
 
 	public static void addConnectedConcepts(Integer[] pair) {
 		SystemClustering.connectedConcepts.add(pair);
@@ -104,25 +100,13 @@ public class SystemClustering {
 		this.currentGraphs = currentGraphs;
 	}
 
-	public int getPrevGraphs() {
-		return prevGraphs;
-	}
+	public int getPrevGraphs() { return prevGraphs; }
+	public void setPrevGraphs(int prevClusters) { this.prevGraphs = prevClusters; }
 
-	public ArrayList<ArrayList<Integer>> getGraphs() {
-		return graphs;
-	}
+	public ArrayList<ArrayList<Integer>> getGraphs() { return graphs; }
 
-	public void setPrevGraphs(int prevClusters) {
-		this.prevGraphs = prevClusters;
-	}
-
-	public boolean isIncrease() {
-		return increase;
-	}
-
-	public void setIncrease(boolean increase) {
-		this.increase = increase;
-	}
+	public boolean isIncrease() { return increase; }
+	public void setIncrease(boolean increase) { this.increase = increase; }
 
 	public static HashSet<String> widgets;
 
@@ -132,7 +116,10 @@ public class SystemClustering {
 	 * getGraphCounter. Then receive an arraylist of arraylists. Every nested
 	 * arraylist holds the vertices of the specific graph. Group all vertices of
 	 * the same graph and then set styleName in order to create a group of the
-	 * same colour.
+	 * same colour. 
+	 * 
+	 * Receiving also the clusters, System Clustering calls computeModularityIndex() method
+	 * that computes the modularity index of the whole graph. 
 	 * 
 	 * @param user
 	 * @param title
@@ -169,12 +156,12 @@ public class SystemClustering {
 					modIndex.setLabel("system");
 					modIndex.setConnectedConcepts(connectedConcepts);
 					if (result.size() > 1) {
-						
+
 						int connClusterConcepts = 0;
 						modIndex.clusterAllConnections();
 						int nClusters = modIndex.graphSize();
-						//clusteredConnected = new int[nClusters];
-						for( Integer cluster : modIndex.getZeroClusters()){
+						// clusteredConnected = new int[nClusters];
+						for (Integer cluster : modIndex.getZeroClusters()) {
 							Concept.aloneConcepts++;
 							result.remove(cluster);
 							cpReturnGraphs.remove(cluster);
@@ -196,9 +183,9 @@ public class SystemClustering {
 								result.get(0));
 						graphs.add(newList);
 						graphsColour.clear(); // added by van
-						graphsColour.add(0); // added by van
-						colouredGraphs.clear(); // added by van
-						colouredGraphs.add(result.get(0)); // added by van
+						graphsColour.add(0); 
+						colouredGraphs.clear(); 
+						colouredGraphs.add(result.get(0));
 
 						for (Integer widget : result.get(0)) {
 							DOM.setStyleAttribute(MainView.diagramController
@@ -217,19 +204,16 @@ public class SystemClustering {
 					// the previous status, remove it from the results
 					// arraylist.
 					else {
-						for (int j = 0; j < graphs.size(); j++) {
-							for (int i = 0; i < result.size(); i++) {
+						for (int j = 0; j < graphs.size(); j++) 
+							for (int i = 0; i < result.size(); i++)
 								if (result.get(i).equals(graphs.get(j))) {
-									for (Integer in : result.get(i)) {
+									for (Integer in : result.get(i))
 										System.out.print("," + in);
-									}
 									System.out.println();
 
 									result.remove(i);
 									--i;
 								}
-							}
-						}
 
 						// Find the graph with the most elements. This is the
 						// new graph. Change the background colour of its
@@ -237,39 +221,31 @@ public class SystemClustering {
 						int max = 0;
 						int minGraph = 0;
 						int resultSize = result.size();
-						for (int i = 0; i < resultSize; i++) {
+						for (int i = 0; i < resultSize; i++) 
 							if (result.get(i).size() > max) {
 								max = result.get(i).size();
 								minGraph = i;
 							}
-						}
+
 						System.out.println("Thelw na vapsw " + resultSize);
 						if (resultSize > 0) {
 							int colour = 0;
 							if (isIncrease()) {
 								colour = (MainView.getGraphCounter() % numClusters) - 1;
 
-								System.out.println("Vafw " + colour
+								System.out.println("Colouring " + colour
 										+ " numClusters=" + numClusters
 										+ " getGraphCounter="
-										+ MainView.getGraphCounter()); // changed
-																		// by
-																		// Van
-
-								updateGraphsAndColors_increase(result,
-										minGraph, colour); // added by van
+										+ MainView.getGraphCounter()); 
+								updateGraphsAndColors_increase(result, minGraph, colour); 
 
 							} else {
-								if (MainView.getGraphCounter() > 1) {
-									// colour = (MainView.getGraphCounter() %
-									// numClusters) - 2; //original code
-
+								if (MainView.getGraphCounter() > 1)
 									// code by Van to modify previous line
 									colour = (MainView.getGraphCounter() % numClusters) - 1;
-								} else {
+								else
 									colour = (MainView.getGraphCounter() % numClusters) - 1;
-								}
-								System.out.println("-Vafw " + colour);
+								System.out.println("-Colouring " + colour);
 
 							}
 
@@ -278,8 +254,8 @@ public class SystemClustering {
 								colour = colourRemoved % numClusters;
 							}
 
-							showGraphsAndColors(); // for debugging
-							// showGraphsAndResult(result); //for debugging
+							showGraphsAndColors();
+							// showGraphsAndResult(result);
 
 							// code by van ends here
 							for (Integer widget : result.get(minGraph)) {
@@ -287,8 +263,7 @@ public class SystemClustering {
 										MainView.diagramController
 												.getWidgetById(widget + "")
 												.getElement(),
-										"backgroundColor",
-										Concept.pallete[colour]);
+										"backgroundColor", Concept.pallete[colour]);
 							}
 						}
 
@@ -303,12 +278,10 @@ public class SystemClustering {
 				System.out.println(MyDiagramController.addedConcepts
 						+ " Added Concepts. " + Concept.aloneConcepts
 						+ " with no conns");
-				if (MainView.getGraphCounter() >= (MyDiagramController.addedConcepts - Concept.aloneConcepts)) {
+				if (MainView.getGraphCounter() >= (MyDiagramController.addedConcepts - Concept.aloneConcepts))
 					MainView.help.setEnabled(false);
-				} else {
+				else
 					MainView.help.setEnabled(true);
-				}
-
 			}
 		};
 		System.out.println("RPC client: Thelw " + MainView.getGraphCounter()
@@ -382,7 +355,6 @@ public class SystemClustering {
 			public void onSuccess(Boolean result) {
 				setRestart(result);
 				if (result) {
-					// Window.alert(widgets.size()+"");
 					// get all concepts kept in hashset and set them as default
 					for (String concept : widgets) {
 						MainView.diagramController.getWidgetById(concept)
@@ -397,24 +369,17 @@ public class SystemClustering {
 		importSvc.getRestart(callback);
 	}
 
-	public boolean isRestart() {
-		return restart;
-	}
-
-	public void setRestart(boolean restart) {
-		this.restart = restart;
-	}
+	public boolean isRestart() { return restart; }
+	public void setRestart(boolean restart) { this.restart = restart; }
 
 	public void initCellTable() {
 		int count = MainView.cellTable.getColumnCount();
-		for (int i = 0; i < count; i++) {
+		for (int i = 0; i < count; i++)
 			MainView.cellTable.removeColumn(0);
-		}
 
 		EditTextCell columnCell = new EditTextCell();
 
-		Column<Object, String> nameColumn = new Column<Object, String>(
-				columnCell) {
+		Column<Object, String> nameColumn = new Column<Object, String>(columnCell) {
 			@Override
 			public String getValue(Object object) {
 				return "Set Name";
@@ -573,13 +538,13 @@ public class SystemClustering {
 		return false;
 	}
 
+	/**
+	 * Step 1. the clusters of the graphs NOT in fullResult must be removed from
+	 * colouredGraphs Step 2. The cluster of the fullResult NOT in graphs must
+	 * be added to colouredGraphs
+	 * 
+	 */
 	public void updateGraphsAndColors_decrease() {
-
-		// Step 1. the clusters of the graphs NOT in fullResult must be removed
-		// from colouredGraphs
-		// Step 2. the cluster of the fullResult NOT in graphs must be added to
-		// colouredGraphs
-
 		// Implementation of Step 1.
 		int minsize = 100;
 		colourRemoved = 200;
@@ -595,8 +560,7 @@ public class SystemClustering {
 					graphsColour.remove(index);
 					minsize = g.size();
 				} else if (index < 0)
-					System.out
-							.println("THIS SHOULD NO HAPPEN: Cannot remove colour");
+					System.out.println("THIS SHOULD NO HAPPEN: Cannot remove colour");
 			}
 		}
 
@@ -654,9 +618,8 @@ public class SystemClustering {
 			MainView.closeClustersIcon.setVisible(true);
 			MainView.setGraphCounter(metaClusters);
 		}
-		else{
+		else
 			System.out.println(metaClusters+" returned from metadata @clustersFromMeta. That's problem");
-		}
 	}
 
 	public void clearAll() {

@@ -134,28 +134,19 @@ public class MapElement extends Label implements HasAllTouchHandlers,
 	public static void setTop(int topy){ top = topy; }
 	public static int getTop(){ return top; }
 	
-	public int getClusterIndex() {
-		return clusterIndex;
-	}
-
-	public void setClusterIndex(int clusterIndex) {
-		this.clusterIndex = clusterIndex;
-	}
+	public int getClusterIndex() { return clusterIndex; }
+	public void setClusterIndex(int clusterIndex) { this.clusterIndex = clusterIndex; }
 
 	public void CheckIfThisLinkingPhrase() {
-		if (this instanceof LinkingPhrase) {
+		if (this instanceof LinkingPhrase)
 			isThisLinkingPhrase = true;
-		} else if (this instanceof Concept) {
+		else if (this instanceof Concept)
 			isThisLinkingPhrase = false;
-		}
 	}
 
 	public Boolean returnEndWidgetLinkingPhrase() {
 		Widget widget = endLabel;
-		if (widget instanceof LinkingPhrase) {
-			return true;
-		} else
-			return false;
+		return (widget instanceof LinkingPhrase);
 	}
 
 	public void setLinkingPhrasePos(int position) { linkingPhrasePos = position; }
@@ -282,6 +273,9 @@ public class MapElement extends Label implements HasAllTouchHandlers,
 		}
 	}
 
+	/**
+	 * Unselect everything that has been added to widget list.
+	 */
 	public void unSelectEverything() {
 		if (isStartSet) {
 			unsetStartWidget();
@@ -301,7 +295,12 @@ public class MapElement extends Label implements HasAllTouchHandlers,
 			widgetList.get(pos).setStyleName("concept");
 		}
 	}
-
+	
+	/** 
+	 * Given an id, get the coordinates of the element
+	 * @param id
+	 * @return
+	 */
 	public Point getElementCoordinates(String id) {
 		Widget w = MyDiagramModel.get().getFunctionById(id);
 		int x = w.getElement().getAbsoluteLeft();
@@ -332,9 +331,10 @@ public class MapElement extends Label implements HasAllTouchHandlers,
 		event.stopPropagation();
 		setLeft(event.getNativeEvent().getClientX());
 		setTop(event.getNativeEvent().getClientY());
-		this.contextMenu.setPopupPosition(event.getNativeEvent().getClientX(),
+		contextMenu.setPopupPosition(event.getNativeEvent().getClientX(),
 				event.getNativeEvent().getClientY());
-		this.contextMenu.show();
+		
+		contextMenu.show();
 	}
 
 	protected void initWidget(String text) {
@@ -361,7 +361,6 @@ public class MapElement extends Label implements HasAllTouchHandlers,
 		((ContextMenu) this.contextMenu).addItem(new MenuItem(rename, true,
 				new Command() {
 					public void execute() {
-						// fireEvent
 						contextMenu.hide();
 						setSelectedPosition(getCurrentLabelPos());
 						MainView.addInsertItemPanel(getLeft() - 192, getTop());
@@ -383,7 +382,6 @@ public class MapElement extends Label implements HasAllTouchHandlers,
 		((ContextMenu) this.contextMenu).addItem(new MenuItem(deleteTxt, true,
 				new Command() {
 					public void execute() {
-						// fireEvent
 						delete(getCurrentLabelPos());
 						contextMenu.hide();
 					}
@@ -398,7 +396,6 @@ public class MapElement extends Label implements HasAllTouchHandlers,
 		((ContextMenu) this.contextMenu).addItem(new MenuItem(addToClusterTxt,
 				true, new Command() {
 					public void execute() {
-						// fireEvent
 						Concept widget = (Concept) widgetList.get(getCurrentLabelPos());
 						widgetList.get(getCurrentLabelPos()).setClusterIndex(
 								UserClustering.getChosen());
@@ -417,9 +414,10 @@ public class MapElement extends Label implements HasAllTouchHandlers,
 						UimaResponse neighborWords = wordsCollector.getNeighors();
 						contextMenu.getWidget().getOffsetHeight();
 						NeighborMenu list = new NeighborMenu(neighborWords.getWords(), widget.getAbsoluteTop(), widget.getAbsoluteTop());		
-						neighborMenuItem.setSubMenu(NeighborMenu.getMenuBar());
+						neighborMenuItem.setSubMenu(list.getMenuBar());
 					}
 				});
+		neighborMenuItem.setEnabled(true);
 		((ContextMenu) this.contextMenu).addItem(neighborMenuItem);
 	}
 	

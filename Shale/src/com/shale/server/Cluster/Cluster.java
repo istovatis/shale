@@ -34,23 +34,12 @@ public class Cluster extends RemoteServiceServlet {
 		return graphType;
 	}
 
-	public String getFileXML() {
-		return fileXML;
-	}
-
-	public void setFileXML(String fileXML) {
-		this.fileXML = fileXML;
-	}
+	public String getFileXML() {return fileXML; }
+	public void setFileXML(String fileXML) { this.fileXML = fileXML; }
 
 	private int numGraphs;
-
-	public int getNumGraphs() {
-		return numGraphs;
-	}
-
-	public void setNumGraphs(int numGraphs) {
-		this.numGraphs = numGraphs;
-	}
+	public int getNumGraphs() {return numGraphs; }
+	public void setNumGraphs(int numGraphs) { this.numGraphs = numGraphs; }
 
 	public void createClusters(String fileXml) {
 		final DomParserCM2 dpCM = new DomParserCM2();
@@ -78,13 +67,11 @@ public class Cluster extends RemoteServiceServlet {
 					vertices.add(ver);
 				}
 				links.add(e);
-			}
-			System.out.println(clusterSet.size()+" sizy");
-			
+			}			
 			for (Iterator<Set<Integer>> cIt = clusterSet.iterator(); cIt
 					.hasNext();) {
 				Set<Integer> vertice = cIt.next();
-				if(vertice.size()<=1){
+				if(vertice.size() <= 1){
 					cIt.remove();
 				}
 				else{
@@ -128,10 +115,9 @@ public class Cluster extends RemoteServiceServlet {
 		if (vertices.size() <= graph.getVertexCount()) {
 			subGraph = SparseMultigraph.<Integer, Integer> getFactory()
 					.create();
-			for (Integer v : vertices) {
+			for (Integer v : vertices) 
 				subGraph.addVertex(v);
-				;
-			}
+	
 		}
 		return subGraph;
 	}

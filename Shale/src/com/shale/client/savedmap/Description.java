@@ -32,11 +32,11 @@ public class Description extends FileImportation {
 
 	private String name;
 	private String author;
-
 	Map<String, String> descs = new HashMap<String, String>(0);
 	private static Set<String> authors = new HashSet<String>();
 	private ImportServiceAsync importSvc = GWT.create(ImportService.class);
-
+	
+	@Override
 	public void setFileName() {
 		this.fileName = "descriptions";
 	}
@@ -207,9 +207,8 @@ public class Description extends FileImportation {
 			public void onSuccess(String result) {
 				if (result == null) {
 					// No descriptions added
-				} else {
+				} else
 					setText(result);
-				}
 			}
 		};
 		String occasion = "description_file";
@@ -252,9 +251,8 @@ public class Description extends FileImportation {
 			public void onSuccess(String result) {
 				if (result == null) {
 					// No diagram retrieved
-				} else {
+				} else
 					setDescription(result);
-				}
 			}
 
 		};

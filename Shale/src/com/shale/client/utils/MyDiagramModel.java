@@ -21,6 +21,7 @@ import com.shale.client.element.MapElement;
 import com.shale.client.importer.DiagramImportation;
 
 /**
+ * The model of the Diagram, specifing concepts and linking phrases.  
  * This class follows the singleton pattern, as only one instance of
  * MyDiagramModel is neccesary
  * 
@@ -90,10 +91,10 @@ public class MyDiagramModel implements IsSerializable {
 	}
 
 	public Widget getFunctionById(String id) {
-		for (Widget w : functionWidgetMap.keySet()) {
+		for (Widget w : functionWidgetMap.keySet()) 
 			if (functionWidgetMap.get(w).equals(id))
 				return w;
-		}
+		
 		return null;
 	}
 	
@@ -104,10 +105,10 @@ public class MyDiagramModel implements IsSerializable {
 	public int getNumberOfStartingLinks(Widget widget) {
 		String id = functionWidgetMap.get(widget);
 		int numberOfStartingLinks = 0;
-		for (LinkingPhraseModel link : linkRepresentationSet) {
+		for (LinkingPhraseModel link : linkRepresentationSet) 
 			if (link.startId.equals(id))
 				numberOfStartingLinks++;
-		}
+		
 		return numberOfStartingLinks;
 	}
 

@@ -42,50 +42,25 @@ public class Student extends User {
 	private ExportServiceAsync exportSvc = GWT.create(ExportService.class);
 	private ImportServiceAsync importSvc = GWT.create(ImportService.class);
 
-	public String getName(){
-		return name;
-	}
+	public String getName() { return name; }
+	public void setName(String name){ this.name = name; }
 	
 	public static void clearStudents(){
 		studentsCount = 0;
 		nextId = 0;
 	}
 	
-	public void setName(String name){
-		this.name = name;
-	}
+	public static int getNextId() { return nextId; }
+	public static void setNextId(int nextId) { Student.nextId = nextId; }
 	
-	public static int getNextId() {
-		return nextId;
-	}
+	public static String getMyTeacher() { return myTeacher; }
+	public static void setMyTeacher(String teacher) { myTeacher = teacher; }
 
-	public static void setNextId(int nextId) {
-		Student.nextId = nextId;
-	}
+	public static String getStudentList() {return studentList; }
+	public static void setStudentList(String st) { studentList = st; }
 	
-	public static String getMyTeacher() {
-		return myTeacher;
-	}
-
-	public static void setMyTeacher(String teacher) {
-		myTeacher = teacher;
-	}
-
-	public static void setStudentList(String st) {
-		studentList = st;
-	}
-
-	public static String getStudentList() {
-		return studentList;
-	}
-	
-	public static int getStudentsCount() {
-		return studentsCount;
-	}
-
-	public static void setStudentsCount(int studentsCount) {
-		Student.studentsCount = studentsCount;
-	}
+	public static int getStudentsCount() { return studentsCount; }
+	public static void setStudentsCount(int studentsCount) { Student.studentsCount = studentsCount; }
 	
 	public void initUsersListBox(){
 		MenuView.myStudentsList.addItem(User.getUsername());

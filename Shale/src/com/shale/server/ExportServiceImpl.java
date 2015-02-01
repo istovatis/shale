@@ -26,6 +26,11 @@ import java.nio.channels.FileChannel;
 import com.shale.client.exporter.ExportService;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
+/**
+ * The server side implementation of diagram exportation service 
+ * @author Istovatis -- istovatis@gmail.com --
+ *
+ */
 public class ExportServiceImpl extends RemoteServiceServlet implements
 		ExportService {
 
@@ -57,7 +62,6 @@ public class ExportServiceImpl extends RemoteServiceServlet implements
 			out.close();
 
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 	}
@@ -91,18 +95,15 @@ public class ExportServiceImpl extends RemoteServiceServlet implements
 
 		if (sourceLocation.isDirectory()) {
 			// If targetLocation does not exist, it will be created.
-			if (!targetLocation.exists()) {
-				if (!new File("C:" + slash + "CMAP-backup" + slash + target)
-						.mkdir())
-					;
-				targetLocation.mkdir();
-			}
+			if (!targetLocation.exists())
+				if (!new File("C:" + slash + "CMAP-backup" + slash + target).mkdir());
+					targetLocation.mkdir();
+			
 			String[] children = sourceLocation.list();
 
-			for (int i = 0; i < children.length; i++) {
+			for (int i = 0; i < children.length; i++) 
 				copyDirectory(source + slash + children[i], target);
-				// System.out.println("source:"+source+"target"+target+" child"+children[i]);
-			}
+			
 		} else {
 			try {
 				FileChannel ic = new FileInputStream(sourceLocation).getChannel();

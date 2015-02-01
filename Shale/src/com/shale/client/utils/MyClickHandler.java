@@ -4,9 +4,15 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.shale.client.element.MapElement;
 
+/**
+ * A Click Handler implementation 
+ * @author Istovatis -- istovatis@gmail.com --
+ *
+ */
 public class MyClickHandler implements ClickHandler {
 
 	private int position;
+	public int getPosition() {return position; }
 	
 	public MyClickHandler(){}
 	
@@ -21,9 +27,4 @@ public class MyClickHandler implements ClickHandler {
 
 		element.checkElement(event, pos);
 	}
-
-	public int getPosition() {
-		return position;
-	}
-	
 }

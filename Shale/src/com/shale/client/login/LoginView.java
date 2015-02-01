@@ -32,7 +32,7 @@ import com.shale.client.utils.Languages;
 
 
 /**
- * This is the first view presented to user when entering the map. User inserts
+ * The first view presented to user when entering the map. User inserts
  * username and password. Credentials are checked at the server and authorized
  * user is allowed to proceed to Menu View.
  * 
@@ -252,7 +252,10 @@ public class LoginView extends Composite implements HasText {
 			}
 		});
 	}
-
+	
+	/**
+	 * Check firstly if username and password are set. Then validate user.
+	 */
 	public void checkAndProcceed() {
 		try {
 			if (isUsernamePressed()) {

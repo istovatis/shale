@@ -41,29 +41,21 @@ public class Teacher extends User {
 	private String name;
 	private static int numTeachers;		//Number of teachers at teachers.cxl
 
-	public static int getNumTeachers() {
-		return numTeachers;
-	}
-
-	public static void setNumTeachers(int numTeachers) {
-		Teacher.numTeachers = numTeachers;
-	}
+	public static int getNumTeachers() {return numTeachers; }
+	public static void setNumTeachers(int numTeachers) { Teacher.numTeachers = numTeachers; }
 
 	Dictionary dict = Languages.getDictionary();
 
 	public Teacher(String name) {
 		setDescription(name);
 	}
-
+	public void chooseMap() {}
 	public Teacher() { }
 
 	public void setName(String name) { this.name = name; }
 	public String getName() { return name; }
 
-	public static void setSelectedTeacher(String tech) {
-		selectedTeacher = tech;
-	}
-
+	public static void setSelectedTeacher(String tech) { selectedTeacher = tech; }
 	public static String getSelectedTeacher() { return selectedTeacher; }
 	
 	public static void setTeacherList(String teach) { teacherList = teach; }
@@ -147,13 +139,10 @@ public class Teacher extends User {
 	 */
 	public int findMaxId(String studentId, int maxId) {
 		Integer curId = Integer.valueOf(studentId);
-		if (maxId < curId) {
+		if (maxId < curId)
 			maxId = curId;
-		}
 		return maxId;
 	}
-
-	public void chooseMap() {}
 
 	/**
 	 * 
@@ -197,9 +186,8 @@ public class Teacher extends User {
 				for (int j = 0; j < studentList.getLength(); j++) {
 					Element st = (Element) studentList.item(j);
 					String student = st.getAttribute("name");
-					if (student.equals(name)) {
+					if (student.equals(name))
 						teach.removeChild(st);
-					}
 				}
 			}
 		}
@@ -253,11 +241,9 @@ public class Teacher extends User {
 		for (int i = 0; i < teacherList.getLength(); i++) {
 			Element teach = (Element) teacherList.item(i);
 			String teacherName = teach.getAttribute("name");
-			if (teacherName.equals(thisTeacher)) {
+			if (teacherName.equals(thisTeacher))
 				teach.appendChild(studentEl);
-			}
 		}
-
 		return doc.toString();
 	}
 
@@ -441,9 +427,8 @@ public class Teacher extends User {
 		// edit Student name @ Teacher's StudentList
 		for (int i = 0; i < myStudents.size(); i++) {
 			String student = myStudents.get(i);
-			if (student.equals(oldName)) {
+			if (student.equals(oldName))
 				myStudents.set(i, newName);
-			}
 		}
 
 		// set student's new name
@@ -455,9 +440,8 @@ public class Teacher extends User {
 		editStudentRPC(newText);
 
 		// If name changed, rename all file created by this user
-		if (!oldName.equals(newName)) {
+		if (!oldName.equals(newName))
 			getUserFilesRPC(oldName);
-		}
 	}
 
 	/**
@@ -675,9 +659,8 @@ public class Teacher extends User {
 	 * by current teacher.
 	 */
 	public void initMyStudentsForMenu() {
-		for (String student : myStudents) {
+		for (String student : myStudents)
 			MenuView.myStudentsList.addItem(student);
-		}
 	}
 
 	/**
@@ -685,9 +668,8 @@ public class Teacher extends User {
 	 * by current teacher.
 	 */
 	public void initMyStudentsForInsert() {
-		for (String student : myStudents) {
+		for (String student : myStudents)
 			InsertView.myStudentList.addItem(student);
-		}
 	}
 
 	/**
@@ -788,9 +770,8 @@ public class Teacher extends User {
 			User.setOrganisation(org);
 			User.setGroup("teacher");
 			return true;
-		} else {
+		} else 
 			return false;
-		}
 	}
 
 }

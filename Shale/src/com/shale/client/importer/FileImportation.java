@@ -60,9 +60,8 @@ public abstract class FileImportation {
 				admin.setFileName();
 			}
 			// if author is not this teacher, set file as user-title.cxl
-			else {
+			else 
 				admin.setFileName(author);
-			}
 			fileName = admin.getFileName();
 		} else if (group.equals("student")) {
 			Student student = new Student();

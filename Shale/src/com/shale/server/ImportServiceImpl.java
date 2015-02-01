@@ -121,9 +121,9 @@ public class ImportServiceImpl extends RemoteServiceServlet implements
 			String text;
 			try {
 				while ((text = inputStream.readLine()) != null) {
-					if (parsedText == null) {
+					if (parsedText == null) 
 						parsedText = text;
-					} else
+					else
 						parsedText = parsedText + text;
 				}
 			} catch (IOException e) {
@@ -136,8 +136,7 @@ public class ImportServiceImpl extends RemoteServiceServlet implements
 				try {
 					inputStream.close();
 				} catch (IOException e) {
-					System.out.println(e.getLocalizedMessage()
-							+ e.getStackTrace());
+					System.out.println(e.getLocalizedMessage() + e.getStackTrace());
 				}
 			}
 		}

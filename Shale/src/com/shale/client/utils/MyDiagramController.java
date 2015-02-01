@@ -29,6 +29,11 @@ import com.shale.client.exporter.DiagramExportation;
 import com.shale.client.exporter.DiagramSaveFactoryImpl;
 import com.shale.client.importer.DiagramImportation;
 
+/**
+ * A Diagram Controller extension that implements diagram importation
+ * @author Istovatis -- istovatis@gmail.com --
+ *
+ */
 public class MyDiagramController extends DiagramController {
 	
 	public static Map<String, Widget> idToWidgetMap;
@@ -57,11 +62,13 @@ public class MyDiagramController extends DiagramController {
 		}));
 
 	}
-
+	
+	@Override
 	public String exportDiagram() {
 		return DiagramExportation.exportDiagram(getMyDiagramModel());
 	}
 
+	
 	public MyDiagramModel getMyDiagramModel() {
 		MyDiagramModel diagramRepresentation = MyDiagramModel.get();
 		diagramRepresentation.clear();
@@ -147,7 +154,7 @@ public class MyDiagramController extends DiagramController {
 	 * Modified inDragBuildArrow, to provide linking phrase generation
 	 * @see com.orange.links.client.DiagramController#onMouseMove(com.google.gwt.event.dom.client.MouseMoveEvent)
 	 */
-	
+	@Override
 	protected void onMouseMove(MouseMoveEvent event) {
 		if(!isAllowingUserInteractions()){
 			return;

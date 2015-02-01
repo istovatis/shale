@@ -3,6 +3,12 @@ package com.shale.client.utils;
 import com.orange.links.client.shapes.Point;
 import com.shale.client.conceptmap.MainView;
 
+/**
+ * Adaptation of mouse position into the map's requirements.
+ * Mouse coordinates should not exceed the boundaries of the map. 
+ * @author Istovatis -- istovatis@gmail.com --
+ *
+ */
 public class Mouse {
 
 	public Mouse() {
@@ -15,8 +21,6 @@ public class Mouse {
 	private int top;
 	private int left;
 
-	// perasma twn sintetagmenwn tou pontikiou
-	// kai diorthwsi gia na mi ksefeugei to menu apo to plaisio tou diagram
 	public Point getMouse(Point mouse) {
 		int left = mouse.getLeft();
 		int top = mouse.getTop();
@@ -77,5 +81,4 @@ public class Mouse {
 	public int getTop() {
 		return MainView.diagramController.getMousePoint().getTop();
 	}
-
 }

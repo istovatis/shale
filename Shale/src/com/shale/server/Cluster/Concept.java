@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * The concept representation in the server
+ * The concept representation on the server side
  * @author Istovatis -- istovatis@gmail.com --
  *
  */
@@ -27,10 +27,8 @@ class Concept {
 	}
 
 	public String toString() {
-
 		String s = "Concept details ";
 		return s + "id:" + id + "," + "label: " + label;
-
 	}
 
 	public void showPhrases() {
@@ -48,23 +46,15 @@ class Concept {
 			LinkingPhrase phrase = (LinkingPhrase) outIter.next();
 			System.out.println(phrase.label);
 		}
-
-		System.out.println("\n----------------------------");
-
 	}
 
 	public void showLocation() {
-
 		System.out.println("at (" + x + ", " + y + ")");
 	}
 
-	public String getLabel() {
-		return label;
-	}
+	public String getLabel() { return label; }
 
-	public String getId() {
-		return id;
-	}
+	public String getId() { return id; }
 
 	public void addInPhrases(Concept c) {
 		inPhrases.add(c);
@@ -74,12 +64,8 @@ class Concept {
 		outPhrases.add(c);
 	}
 
-	public void setX(int xpos) {
-		x = xpos;
-	}
+	public void setX(int xpos) { x = xpos; }
 
-	public void setY(int ypos) {
-		y = ypos;
-	}
+	public void setY(int ypos) { y = ypos; }
 
 }

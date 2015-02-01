@@ -3,7 +3,7 @@ package com.shale.server;
 import java.io.File;
 
 /**
- * A file representation
+ * A server side file representation
  * @author Istovatis -- istovatis@gmail.com --
  *
  */
@@ -27,13 +27,8 @@ public class Files {
 		setFullPath();
 	}
 
-	public void setOrganisation(String organisation) {
-		this.organisation = organisation;
-	}
-
-	public String getOrganisation() {
-		return organisation;
-	}
+	public void setOrganisation(String organisation) { this.organisation = organisation; }
+	public String getOrganisation() {return organisation; }
 
 	public void setFileName(String fileName, String title) {
 		this.fileName = fileName + "-" + title + ".cxl";
@@ -43,9 +38,7 @@ public class Files {
 		this.fileName = fileName + ".cxl";
 	}
 
-	public String getFileName() {
-		return fileName;
-	}
+	public String getFileName() {return fileName; }
 	
 	/**
 	 * Set the directory. If the directory is the current, don't add the file Seperator
@@ -74,7 +67,5 @@ public class Files {
 		fullPath = getDirectory() + getFileName(); 
 	}
 	
-	public String getFullPath(){
-		return fullPath;
-	}
+	public String getFullPath(){return fullPath; }
 }

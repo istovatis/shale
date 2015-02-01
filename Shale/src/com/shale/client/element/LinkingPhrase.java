@@ -51,10 +51,7 @@ public class LinkingPhrase extends MapElement implements Savable {
 		return this;
 	}
 
-	@Override
-	public String getIdentifier() {
-		return identifier;
-	}
+	@Override public String getIdentifier() { return identifier; }
 
 	public void delete(int position) {
 		MapElement widget = widgetList.get(position);
@@ -87,7 +84,12 @@ public class LinkingPhrase extends MapElement implements Savable {
 		MainView.diagramController.getView().getElement().setId(linkingPhrase.getText());
 		unSelectEverything();
 	}
-
+	
+	/**
+	 * Having a starting and an end concept, draw a linking phrase that
+	 * will link start and end concept. The form of concept-linking_phrase-concept
+	 * is called proposition.
+	 */
 	public void drawLinkingPhrase() {
 		MapElement mapElement = new MapElement();
 		int startWidgetPos = mapElement.getStartLabelPos();
@@ -113,7 +115,8 @@ public class LinkingPhrase extends MapElement implements Savable {
 	}
 
 	protected void initWidget(String text) {
-		this.contextMenu = new ContextMenu();
+		contextMenu = new ContextMenu();
+		contextMenu.setAnimationEnabled(true);
 		String ren = Languages.getDictionary().get("rename");
 		String reverse = "Reverse Direction";
 		((ContextMenu) this.contextMenu).addItem(new MenuItem(ren, true,
@@ -142,9 +145,8 @@ public class LinkingPhrase extends MapElement implements Savable {
 						System.out.println("I chose "+thisPosition);
 						for (LinkingPhraseModel link : linkSet) {
 							System.out.println("Check "+link.id);
-							if(link.id.equals(thisPosition)){
+							if(link.id.equals(thisPosition))
 								System.out.println(link.decoration+" chosen");
-							}
 						}
 						//MapElement widget = widgetList.get(currentLabelPos);
 					}

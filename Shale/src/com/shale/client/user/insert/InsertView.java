@@ -21,9 +21,14 @@ import com.shale.client.user.Student;
 import com.shale.client.user.Teacher;
 import com.shale.client.utils.Languages;
 
+/**
+ * View that is responsible for student management.
+ * Student CRUD operations are supported here.
+ * @author Istovatis -- istovatis@gmail.com --
+ *
+ */
 public class InsertView extends Composite  {
-	@UiField
-	public static Button done;
+	@UiField public static Button done;
 	@UiField public static TextBox username;
 	@UiField public static Label passwordLabel;
 	@UiField PasswordTextBox password;
@@ -38,8 +43,7 @@ public class InsertView extends Composite  {
 	@UiField public static Label showPassLabel;
 	
 	private InsertActivity insertActivity;
-	private static InsertVoewUiBinder uiBinder = GWT
-			.create(InsertVoewUiBinder.class);
+	private static InsertVoewUiBinder uiBinder = GWT.create(InsertVoewUiBinder.class);
 
 	Dictionary dict;
 	Dictionary winDict;
@@ -48,8 +52,7 @@ public class InsertView extends Composite  {
 	
 	//set edit as true when you want to edit student
 	private boolean edit = false;
-	interface InsertVoewUiBinder extends UiBinder<Widget, InsertView> {
-	}
+	interface InsertVoewUiBinder extends UiBinder<Widget, InsertView> { }
 
 	public InsertView() {
 		initWidget(uiBinder.createAndBindUi(this));

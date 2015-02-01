@@ -1,7 +1,8 @@
 package com.shale.server.Cluster;
 
 /**
- * The proposition representation in server side
+ * The proposition representation in server side.
+ * Every proposition is represented as Concept-Linking Phrase-Concept
  * @author Istovatis -- istovatis@gmail.com --
  *
  */
@@ -36,7 +37,6 @@ class Proposition {
 	public void setFromConcept(Concept fromConcept) { this.fromConcept = fromConcept; }
 
 	public String toString() {
-
 		String s = "Proposition: ";
 		s = s + "id:" + id;
 

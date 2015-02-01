@@ -97,21 +97,11 @@ public class UserClustering {
 		public ArrayList<Concept> concepts;
 		private int index;
 
-		public int getId() {
-			return id;
-		}
+		public int getId() { return id; }
+		public void setId(int id) { this.id = id; }
 
-		public void setId(int id) {
-			this.id = id;
-		}
-
-		public String getName() {
-			return this.name;
-		}
-
-		public void setName(String name) {
-			this.name = name;
-		}
+		public String getName() { return this.name; }
+		public void setName(String name) { this.name = name; }
 
 		public UserClusterInfo() {
 			this.name = "Set name";
@@ -146,7 +136,6 @@ public class UserClustering {
 
 		@Override
 		public int compareTo(UserClusterInfo o) {
-			// TODO Auto-generated method stub
 			return 0;
 		}
 	}
@@ -171,9 +160,8 @@ public class UserClustering {
 	 */
 	public void addDataDisplay(HasData<UserClusterInfo> display) {
 		Set<HasData<UserClusterInfo>> displays = dataProvider.getDataDisplays();
-		if (displays.size() == 0) {
+		if (displays.size() == 0)
 			dataProvider.addDataDisplay(display);
-		}
 	}
 
 	/**
@@ -200,14 +188,10 @@ public class UserClustering {
 	public void increaseRows() {
 		MainView.dettachLabels();
 		int modelLinks = MyDiagramModel.get().getNumberOfFunctions();
-		// MyDiagramModel model =
-		// MainView.diagramController.getMyDiagramModel();
-		// int links = model.getLinkRepresentationSet().size();
-		// int all = model.getFunctionRepresentationSet().size();
 		int concepts = MyDiagramController.addedConcepts;
 		int rows = MainView.userCellTable.getRowCount();
 		if (modelLinks == (concepts)) {
-			// System.out.println("ola komple");
+			// System.out.println("Model links are equal to concepts, so no problem detected");
 		} else
 			System.out.println(modelLinks + "!=" + (concepts));
 		if ((concepts) != MainView.diagramController.getMapSize()) {
@@ -220,8 +204,7 @@ public class UserClustering {
 			System.out.println("User cluster added");
 		} else {
 			System.out.println("(" + rows
-					+ ") Clusters can not be more than concepts (" + (concepts)
-					+ ")");
+					+ ") Clusters can not be more than concepts (" + (concepts) + ")");
 		}
 		// add creator label to Map diagram
 		MainView.attachLabels();
@@ -265,11 +248,9 @@ public class UserClustering {
 
 				try {
 					ret = object.name;
-					if (ret.equals(null)) {
+					if (ret.equals(null))
 						return "Set Name";
-					}
 				} catch (NullPointerException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 					return "Set Name";
 				}
@@ -293,6 +274,7 @@ public class UserClustering {
 		// Checkbox columnn
 		checkColumn = new Column<UserClusterInfo, Boolean>(new CheckboxCell(
 				true, false)) {
+			
 			@Override
 			public Boolean getValue(UserClusterInfo object) {
 				// Get the value from the selection model
@@ -331,9 +313,8 @@ public class UserClustering {
 						List<UserClusterInfo> tmp = dataProvider.getList();
 						for (UserClusterInfo tmpCluster : tmp) {
 							int prev = tmpCluster.index;
-							if (index < prev) {
+							if (index < prev)
 								tmpCluster.index = --prev;
-							}
 						}
 						MainView.attachCreator();
 						MainView.attachLabels();
@@ -360,7 +341,9 @@ public class UserClustering {
 	}
 
 	/**
-	 * Add a border to the concept. Also add the concept to the cluster
+	 * Add a border to the concept. Also add the concept to the cluster.
+	 * To do that, firstly removes the concept from the cluster that belongs.
+	 * Then adds it to the selected cluster.
 	 * 
 	 * @param element
 	 */
@@ -369,8 +352,6 @@ public class UserClustering {
 		int index = getChosen();
 		if (index >= 0) {
 			element.setTabIndex(index);
-			// first remove the concept from the cluster that belongs. Then add
-			// it to the selected cluster
 			removeFromCluster(concept);
 			addToCluster(concept);
 			DOM.setStyleAttribute(element, "border", "6px outset "
@@ -404,7 +385,7 @@ public class UserClustering {
 			ArrayList<Concept> clusterConcepts = clusterList.get(i).concepts;
 			if (clusterConcepts.contains(concept)) {
 				clusterConcepts.remove(concept);
-				System.out.println("Already existed!");
+				System.out.println(" Concept already existed!");
 			}
 		}
 	}
@@ -473,8 +454,6 @@ public class UserClustering {
 				return "graph" + p.getId();
 			}
 		});
-		List<UserClusterInfo> values = dataProvider.getList();
-		// MainView.userCellTable.setRowData(values);
 	}
 
 	public void ComputeModularity(ArrayList<ArrayList<Integer>> graph) {
@@ -490,16 +469,13 @@ public class UserClustering {
 		connectedConcepts.clear();
 	}
 	
-	public static boolean contains(Concept concept, int index){
+	public static boolean contains(Concept concept, int index) {
 		int id = concept.getId();
 		UserClusterInfo cluster = clusterList.get(index);
-		//for(UserClusterInfo cluster : clusterList){
-			for(Concept cpt : cluster.concepts){
-				if(cpt.getId() == id){
+			for (Concept cpt : cluster.concepts)
+				if (cpt.getId() == id)
 					return true;
-				}
-			}
-		//}
-			return false;
+			
+		return false;
 	}
 }

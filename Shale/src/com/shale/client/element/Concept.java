@@ -75,8 +75,8 @@ public class Concept extends MapElement implements Savable {
 				LinksClientBundle.INSTANCE.css().translucide());
 	}
 
-	/*
-	 * remove targetPanel and insertItem to avoid ClassCastException (widget
+	/**
+	 * Remove targetPanel and insertItem to avoid ClassCastException (widget
 	 * must implement Savable...)
 	 * 
 	 * 
@@ -84,7 +84,6 @@ public class Concept extends MapElement implements Savable {
 	 */
 	public void delete(int position) {
 		MainView.dettachLabels();
-		//MyDiagramModel model= MainView.diagramController.getMyDiagramModel();
 		MapElement widget = widgetList.get(position);
 		int id  = widget.id;
 		MainView.diagramController.deleteWidget(widget);
@@ -97,12 +96,7 @@ public class Concept extends MapElement implements Savable {
 		MainView.attachCreator();
 	}
 	
-	public static int getNumConcepts() {
-		return numConcepts;
-	}
-
-	public static void setNumConcepts(int numConcept) {
-		numConcepts = numConcept;
-	}
+	public static int getNumConcepts() { return numConcepts; }
+	public static void setNumConcepts(int numConcept) { numConcepts = numConcept; }
 
 }

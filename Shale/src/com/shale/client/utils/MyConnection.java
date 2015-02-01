@@ -9,6 +9,11 @@ import com.orange.links.client.shapes.Point;
 import com.orange.links.client.shapes.Shape;
 import com.orange.links.client.utils.Segment;
 
+/**
+ * A straight arrow extension
+ * @author Istovatis -- istovatis@gmail.com --
+ *
+ */
 public abstract  class MyConnection extends MyStraightArrowConnection{
 
 	public static CssColor defaultConnectionColor = CssColor.make("#99CCCC");
