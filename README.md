@@ -2,7 +2,7 @@ shale
 =====
 
 Shale is a semantic concept map web application developed in GWT. Concept mapping has been developed as
-a learning activity method by which students develops, externalize and communicate cognitive schemata to others. The deployed project can be accessed in http://83.212.101.82:8080/webmaps6/ Non register users can access web application as guests with username:guest and password:guest.
+a learning activity method by which students develops, externalize and communicate cognitive schemata to others. The deployed project can be accessed in http://195.251.22.60:8080/shale/ Non register users can access web application as guests with username:guest and password:guest.
 
 Major features:
 * Core issues identification with Girvan Newman algorithm (Newman, M. E., & Girvan, M. (2004). [Finding and evaluating community structure in networks] (http://www.soc.ucsb.edu/faculty/friedkin/Syllabi/Soc148/Newman%20Girvan%202003.pdf). Physical review E)
